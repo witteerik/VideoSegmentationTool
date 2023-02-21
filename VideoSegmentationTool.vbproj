@@ -1,0 +1,50 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net6.0-windows</TargetFramework>
+    <StartupObject>VideoSegmentationTool.My.MyApplication</StartupObject>
+    <UseWindowsForms>true</UseWindowsForms>
+    <MyType>WindowsForms</MyType>
+    <Title>Video Segmentation Tool</Title>
+    <Description>A simple tool that can be used to determine the start and end of a single event in a set of videos contained in the same folder.
+
+License: GPL V3
+
+This software uses the Emgu.CV library.
+
+The source code of this software is available at https://github.com/witteerik/VideoSegmentationTool </Description>
+    <Copyright>Copyright © 2023 Erik Witte</Copyright>
+    <Company />
+    <Authors>Erik Witte</Authors>
+    <Product>Video Segmentation Tool</Product>
+    <PackageId>Video Segmentation Tool</PackageId>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Import Include="System.Data" />
+    <Import Include="System.Drawing" />
+    <Import Include="System.Windows.Forms" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Emgu.CV.runtime.windows" Version="4.6.0.5131" />
+    <PackageReference Include="Emgu.CV.UI" Version="4.6.0.5131" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="My Project\Application.Designer.vb">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Application.myapp</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="My Project\Application.myapp">
+      <Generator>MyApplicationCodeGenerator</Generator>
+      <LastGenOutput>Application.Designer.vb</LastGenOutput>
+    </None>
+  </ItemGroup>
+
+</Project>
