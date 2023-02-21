@@ -181,6 +181,7 @@ Partial Class MainForm
         Me.Result_TextBox.Location = New System.Drawing.Point(3, 3)
         Me.Result_TextBox.Multiline = True
         Me.Result_TextBox.Name = "Result_TextBox"
+        Me.Result_TextBox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
         Me.Result_TextBox.Size = New System.Drawing.Size(234, 501)
         Me.Result_TextBox.TabIndex = 15
         Me.Result_TextBox.WordWrap = False
