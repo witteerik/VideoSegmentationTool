@@ -41,6 +41,7 @@ Partial Class MainForm
         Me.TableLayoutPanel3 = New System.Windows.Forms.TableLayoutPanel()
         Me.Splitter4 = New System.Windows.Forms.Splitter()
         Me.TableLayoutPanel2 = New System.Windows.Forms.TableLayoutPanel()
+        Me.CurrentLocation_Label = New System.Windows.Forms.Label()
         Me.Splitter3 = New System.Windows.Forms.Splitter()
         Me.MenuStrip1 = New System.Windows.Forms.MenuStrip()
         Me.AboutToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -67,29 +68,29 @@ Partial Class MainForm
         'Next_Button
         '
         Me.Next_Button.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.Next_Button.Location = New System.Drawing.Point(155, 450)
+        Me.Next_Button.Location = New System.Drawing.Point(185, 450)
         Me.Next_Button.Name = "Next_Button"
         Me.TableLayoutPanel2.SetRowSpan(Me.Next_Button, 2)
-        Me.Next_Button.Size = New System.Drawing.Size(146, 54)
+        Me.Next_Button.Size = New System.Drawing.Size(176, 54)
         Me.Next_Button.TabIndex = 3
         Me.Next_Button.Text = "Next video"
         Me.Next_Button.UseVisualStyleBackColor = True
         '
         'Video_TrackBar
         '
-        Me.TableLayoutPanel2.SetColumnSpan(Me.Video_TrackBar, 4)
+        Me.TableLayoutPanel2.SetColumnSpan(Me.Video_TrackBar, 3)
         Me.Video_TrackBar.Dock = System.Windows.Forms.DockStyle.Fill
         Me.Video_TrackBar.Location = New System.Drawing.Point(3, 410)
         Me.Video_TrackBar.Name = "Video_TrackBar"
-        Me.Video_TrackBar.Size = New System.Drawing.Size(603, 34)
+        Me.Video_TrackBar.Size = New System.Drawing.Size(540, 34)
         Me.Video_TrackBar.TabIndex = 4
         '
         'LockStart_Button
         '
         Me.LockStart_Button.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.LockStart_Button.Location = New System.Drawing.Point(307, 450)
+        Me.LockStart_Button.Location = New System.Drawing.Point(367, 450)
         Me.LockStart_Button.Name = "LockStart_Button"
-        Me.LockStart_Button.Size = New System.Drawing.Size(146, 24)
+        Me.LockStart_Button.Size = New System.Drawing.Size(176, 24)
         Me.LockStart_Button.TabIndex = 5
         Me.LockStart_Button.Text = "Set start:"
         Me.LockStart_Button.UseVisualStyleBackColor = True
@@ -97,9 +98,9 @@ Partial Class MainForm
         'LockEnd_Button
         '
         Me.LockEnd_Button.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.LockEnd_Button.Location = New System.Drawing.Point(307, 480)
+        Me.LockEnd_Button.Location = New System.Drawing.Point(367, 480)
         Me.LockEnd_Button.Name = "LockEnd_Button"
-        Me.LockEnd_Button.Size = New System.Drawing.Size(146, 24)
+        Me.LockEnd_Button.Size = New System.Drawing.Size(176, 24)
         Me.LockEnd_Button.TabIndex = 6
         Me.LockEnd_Button.Text = "Set end:"
         Me.LockEnd_Button.UseVisualStyleBackColor = True
@@ -107,20 +108,22 @@ Partial Class MainForm
         'Start_TextBox
         '
         Me.Start_TextBox.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.Start_TextBox.Location = New System.Drawing.Point(459, 450)
+        Me.Start_TextBox.Location = New System.Drawing.Point(549, 450)
         Me.Start_TextBox.Name = "Start_TextBox"
         Me.Start_TextBox.ReadOnly = True
-        Me.Start_TextBox.Size = New System.Drawing.Size(147, 23)
+        Me.Start_TextBox.Size = New System.Drawing.Size(57, 23)
         Me.Start_TextBox.TabIndex = 7
+        Me.Start_TextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
         'End_TextBox
         '
         Me.End_TextBox.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.End_TextBox.Location = New System.Drawing.Point(459, 480)
+        Me.End_TextBox.Location = New System.Drawing.Point(549, 480)
         Me.End_TextBox.Name = "End_TextBox"
         Me.End_TextBox.ReadOnly = True
-        Me.End_TextBox.Size = New System.Drawing.Size(147, 23)
+        Me.End_TextBox.Size = New System.Drawing.Size(57, 23)
         Me.End_TextBox.TabIndex = 8
+        Me.End_TextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
         'Folder_Button
         '
@@ -167,7 +170,7 @@ Partial Class MainForm
         Me.Previous_Button.Location = New System.Drawing.Point(3, 450)
         Me.Previous_Button.Name = "Previous_Button"
         Me.TableLayoutPanel2.SetRowSpan(Me.Previous_Button, 2)
-        Me.Previous_Button.Size = New System.Drawing.Size(146, 54)
+        Me.Previous_Button.Size = New System.Drawing.Size(176, 54)
         Me.Previous_Button.TabIndex = 14
         Me.Previous_Button.Text = "Previous video"
         Me.Previous_Button.UseVisualStyleBackColor = True
@@ -240,10 +243,10 @@ Partial Class MainForm
         'TableLayoutPanel2
         '
         Me.TableLayoutPanel2.ColumnCount = 4
-        Me.TableLayoutPanel2.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25.0!))
-        Me.TableLayoutPanel2.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25.0!))
-        Me.TableLayoutPanel2.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25.0!))
-        Me.TableLayoutPanel2.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25.0!))
+        Me.TableLayoutPanel2.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30.0!))
+        Me.TableLayoutPanel2.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30.0!))
+        Me.TableLayoutPanel2.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30.0!))
+        Me.TableLayoutPanel2.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10.0!))
         Me.TableLayoutPanel2.Controls.Add(Me.ImageBox1, 0, 0)
         Me.TableLayoutPanel2.Controls.Add(Me.End_TextBox, 3, 3)
         Me.TableLayoutPanel2.Controls.Add(Me.LockEnd_Button, 2, 3)
@@ -252,6 +255,7 @@ Partial Class MainForm
         Me.TableLayoutPanel2.Controls.Add(Me.LockStart_Button, 2, 2)
         Me.TableLayoutPanel2.Controls.Add(Me.Next_Button, 1, 2)
         Me.TableLayoutPanel2.Controls.Add(Me.Previous_Button, 0, 2)
+        Me.TableLayoutPanel2.Controls.Add(Me.CurrentLocation_Label, 3, 1)
         Me.TableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Left
         Me.TableLayoutPanel2.Location = New System.Drawing.Point(243, 0)
         Me.TableLayoutPanel2.Name = "TableLayoutPanel2"
@@ -260,9 +264,18 @@ Partial Class MainForm
         Me.TableLayoutPanel2.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40.0!))
         Me.TableLayoutPanel2.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30.0!))
         Me.TableLayoutPanel2.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30.0!))
-        Me.TableLayoutPanel2.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20.0!))
         Me.TableLayoutPanel2.Size = New System.Drawing.Size(609, 507)
         Me.TableLayoutPanel2.TabIndex = 18
+        '
+        'CurrentLocation_Label
+        '
+        Me.CurrentLocation_Label.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.CurrentLocation_Label.Location = New System.Drawing.Point(549, 407)
+        Me.CurrentLocation_Label.Name = "CurrentLocation_Label"
+        Me.CurrentLocation_Label.Size = New System.Drawing.Size(57, 40)
+        Me.CurrentLocation_Label.TabIndex = 15
+        Me.CurrentLocation_Label.Text = "Label2"
+        Me.CurrentLocation_Label.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
         'Splitter3
         '
@@ -339,4 +352,5 @@ Partial Class MainForm
     Friend WithEvents Splitter3 As Splitter
     Friend WithEvents MenuStrip1 As MenuStrip
     Friend WithEvents AboutToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents CurrentLocation_Label As Label
 End Class

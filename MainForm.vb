@@ -11,11 +11,15 @@ Public Class MainForm
     Private CurrentVideo As VideoCapture = Nothing
     Private CurrentVideoFolder As String = ""
     Private CurrentPath As String = ""
+    Private CurrentStartFrame As Integer = -1
+    Private CurrentEndFrame As Integer = -1
+    Private CurrentFrameRate As Integer
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
         ImageBox1.SizeMode = PictureBoxSizeMode.Zoom
         Video_TrackBar.Minimum = 0
+        CurrentLocation_Label.Text = ""
 
     End Sub
 
@@ -136,13 +140,12 @@ Public Class MainForm
             'MsgBox(ex.ToString)
             'End Try
 
+            CurrentLocation_Label.Text = Video_TrackBar.Value & " / " & Video_TrackBar.Maximum
+            CurrentLocation_Label.Update()
+
         End If
 
     End Sub
-
-    Private CurrentStartFrame As Integer = -1
-    Private CurrentEndFrame As Integer = -1
-    Private CurrentFrameRate As Integer
 
     Private Sub LockStart_Button_Click(sender As Object, e As EventArgs) Handles LockStart_Button.Click
         CurrentStartFrame = Video_TrackBar.Value
@@ -167,7 +170,7 @@ Public Class MainForm
         End If
 
         Dim ResultMessage As String = String.Join(", ", New List(Of String) From {
-                                                  CurrentPath,
+                                                  System.IO.Path.GetFileName(CurrentPath),
                                                   CurrentStartFrame,
                                                   CurrentEndFrame,
                                                   Math.Round(1000 * CurrentStartFrame / CurrentFrameRate),
@@ -179,6 +182,7 @@ Public Class MainForm
         CurrentEndFrame = -1
         Start_TextBox.Text = ""
         End_TextBox.Text = ""
+        CurrentLocation_Label.Text = ""
 
         Return True
 
@@ -190,7 +194,7 @@ Public Class MainForm
 
     End Sub
 
-    Private Sub Extensions_TextBox_TextChanged(sender As Object, e As EventArgs) Handles Extensions_TextBox.TextChanged
+    Private Sub CurrentLocation_Label_Click(sender As Object, e As EventArgs) Handles CurrentLocation_Label.Click
 
     End Sub
 End Class
