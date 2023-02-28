@@ -417,6 +417,7 @@ Partial Class MainForm
         Me.ClientSize = New System.Drawing.Size(1102, 531)
         Me.Controls.Add(Me.Panel2)
         Me.Controls.Add(Me.MenuStrip1)
+        Me.KeyPreview = True
         Me.MainMenuStrip = Me.MenuStrip1
         Me.Name = "MainForm"
         Me.Text = "Video Segmentation Tool"

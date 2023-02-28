@@ -485,4 +485,23 @@ Public Class MainForm
 
     End Sub
 
+
+    Private Sub MainForm_KeyDown(sender As Object, e As KeyEventArgs) Handles MyBase.KeyDown
+
+        'Stores first the start frame and then the end frame on space keydown, but never overwrites
+        If e.KeyData = Keys.Space Then
+            If CurrentStartFrame = -1 Then
+                CurrentStartFrame = Video_TrackBar.Value
+                Start_TextBox.Text = CurrentStartFrame
+            Else
+                If CurrentEndFrame = -1 Then
+                    CurrentEndFrame = Video_TrackBar.Value
+                    End_TextBox.Text = CurrentEndFrame
+                End If
+            End If
+        End If
+
+        CheckAndUnlockPlayButtons()
+
+    End Sub
 End Class
