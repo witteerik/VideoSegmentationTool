@@ -123,9 +123,65 @@ Public Class MainForm
         'Looks in the Result_TextBox for segmentation data
         LookForSegmentationResult()
 
+        'Calculates the difference vector
+        Dim DifferenceVector = CalculateDifferenceVector()
+
         CheckAndUnlockPlayButtons()
 
     End Sub
+
+    Public Function CalculateDifferenceVector() As List(Of Double)
+
+        Dim ResultList As New List(Of Double)
+
+        If CurrentVideo IsNot Nothing Then
+
+            Try
+
+                'Getting the index of the frame to display
+                If Video_TrackBar.Value < CurrentVideo.Get(CapProp.FrameCount) Then
+                End If
+
+                'Displaying the frame
+                'Try
+
+                Dim FrameCount As Integer = CurrentVideo.Get(CapProp.FrameCount)
+
+                'Returns the empty list if no, or only one frame exist
+                If FrameCount < 2 Then
+                    Return ResultList
+                End If
+
+                For frameIndex = 0 To FrameCount - 2
+
+                    CurrentVideo.Set(CapProp.PosFrames, frameIndex)
+                    Dim FirstImage As Image(Of Bgr, Byte) = New Image(Of Bgr, Byte)(CurrentVideo.Width, CurrentVideo.Height, New Bgr(255, 0, 0))
+                    CurrentVideo.Read(FirstImage)
+
+                    CurrentVideo.Set(CapProp.PosFrames, frameIndex + 1)
+                    Dim SecondImage As Image(Of Bgr, Byte) = New Image(Of Bgr, Byte)(CurrentVideo.Width, CurrentVideo.Height, New Bgr(255, 0, 0))
+                    CurrentVideo.Read(SecondImage)
+
+                    Dim AbsoluteDifference = FirstImage.AbsDiff(SecondImage)
+                    Dim ColorChannelSum = AbsoluteDifference.GetSum()
+                    Dim ColorDifferenceSum = ColorChannelSum.Blue + ColorChannelSum.Red + ColorChannelSum.Green
+
+                    ResultList.Add(ColorDifferenceSum)
+
+                Next
+
+            Catch ex As Exception
+                'Returns an empty list if something went wrong
+                Return New List(Of Double)
+
+            End Try
+
+        End If
+
+        Return ResultList
+
+    End Function
+
 
     ''' <summary>
     ''' Returns a list of segmentations results that match the current file name
@@ -293,12 +349,12 @@ Public Class MainForm
 
     End Sub
 
-    Private Sub Play_Button_Click(sender As Object, e As EventArgs) Handles Play1_Button.Click, Play1_Rev_Button.Click, Play2_Button.Click, Play2_Rev_Button.Click, Play3_Button.Click, Play3_Rev_Button.Click
+    Private Sub Play_Button_Click(sender As Object, e As EventArgs)
 
-        Dim CastSender = DirectCast(sender, PlayButton)
+        Dim CastSender = DirectCast(sender, ControlsLibrary.PlayButton)
 
         Select Case CastSender.ViewMode
-            Case PlayButton.ViewModes.Play, PlayButton.ViewModes.Reverse
+            Case ControlsLibrary.PlayButton.ViewModes.Play, ControlsLibrary.PlayButton.ViewModes.Reverse
 
                 Select Case CastSender.Name
                     Case Play1_Button.Name
@@ -315,7 +371,7 @@ Public Class MainForm
                         PlaySection(PlayTypes.Section3Rev)
                 End Select
 
-            Case PlayButton.ViewModes.Stop
+            Case ControlsLibrary.PlayButton.ViewModes.Stop
 
                 'Stopping playback
                 PlayLoopTimer.Stop()
@@ -371,34 +427,34 @@ Public Class MainForm
             Case PlayTypes.Section1
                 Video_TrackBar.Value = 0
                 PlayEndFrame = CurrentStartFrame
-                Play1_Button.ViewMode = PlayButton.ViewModes.Stop
+                Play1_Button.ViewMode = ControlsLibrary.PlayButton.ViewModes.Stop
                 Play1_Button.Enabled = True
             Case PlayTypes.Section1Rev
                 Video_TrackBar.Value = CurrentStartFrame
                 PlayEndFrame = 0
-                Play1_Rev_Button.ViewMode = PlayButton.ViewModes.Stop
+                Play1_Rev_Button.ViewMode = ControlsLibrary.PlayButton.ViewModes.Stop
                 Play1_Rev_Button.Enabled = True
 
             Case PlayTypes.Section2
                 Video_TrackBar.Value = CurrentStartFrame
                 PlayEndFrame = CurrentEndFrame
-                Play2_Button.ViewMode = PlayButton.ViewModes.Stop
+                Play2_Button.ViewMode = ControlsLibrary.PlayButton.ViewModes.Stop
                 Play2_Button.Enabled = True
             Case PlayTypes.Section2Rev
                 Video_TrackBar.Value = CurrentEndFrame
                 PlayEndFrame = CurrentStartFrame
-                Play2_Rev_Button.ViewMode = PlayButton.ViewModes.Stop
+                Play2_Rev_Button.ViewMode = ControlsLibrary.PlayButton.ViewModes.Stop
                 Play2_Rev_Button.Enabled = True
 
             Case PlayTypes.Section3
                 Video_TrackBar.Value = CurrentEndFrame
                 PlayEndFrame = Video_TrackBar.Maximum
-                Play3_Button.ViewMode = PlayButton.ViewModes.Stop
+                Play3_Button.ViewMode = ControlsLibrary.PlayButton.ViewModes.Stop
                 Play3_Button.Enabled = True
             Case PlayTypes.Section3Rev
                 Video_TrackBar.Value = Video_TrackBar.Maximum
                 PlayEndFrame = CurrentEndFrame
-                Play3_Rev_Button.ViewMode = PlayButton.ViewModes.Stop
+                Play3_Rev_Button.ViewMode = ControlsLibrary.PlayButton.ViewModes.Stop
                 Play3_Rev_Button.Enabled = True
 
             Case Else
@@ -456,12 +512,12 @@ Public Class MainForm
     Private Sub EnableControls(ByVal Enabled As Boolean)
 
         'Resetting to Play look an every call
-        Play1_Button.ViewMode = PlayButton.ViewModes.Play
-        Play1_Rev_Button.ViewMode = PlayButton.ViewModes.Reverse
-        Play2_Button.ViewMode = PlayButton.ViewModes.Play
-        Play2_Rev_Button.ViewMode = PlayButton.ViewModes.Reverse
-        Play3_Button.ViewMode = PlayButton.ViewModes.Play
-        Play3_Rev_Button.ViewMode = PlayButton.ViewModes.Reverse
+        Play1_Button.ViewMode = ControlsLibrary.PlayButton.ViewModes.Play
+        Play1_Rev_Button.ViewMode = ControlsLibrary.PlayButton.ViewModes.Reverse
+        Play2_Button.ViewMode = ControlsLibrary.PlayButton.ViewModes.Play
+        Play2_Rev_Button.ViewMode = ControlsLibrary.PlayButton.ViewModes.Reverse
+        Play3_Button.ViewMode = ControlsLibrary.PlayButton.ViewModes.Play
+        Play3_Rev_Button.ViewMode = ControlsLibrary.PlayButton.ViewModes.Reverse
 
         If Enabled = True Then
             CheckAndUnlockPlayButtons()

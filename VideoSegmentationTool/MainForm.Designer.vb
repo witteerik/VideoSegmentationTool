@@ -43,15 +43,15 @@ Partial Class MainForm
         Me.TableLayoutPanel2 = New System.Windows.Forms.TableLayoutPanel()
         Me.CurrentLocation_Label = New System.Windows.Forms.Label()
         Me.TableLayoutPanel4 = New System.Windows.Forms.TableLayoutPanel()
-        Me.Play1_Button = New VideoSegmentationTool.PlayButton()
-        Me.Play2_Button = New VideoSegmentationTool.PlayButton()
-        Me.Play3_Button = New VideoSegmentationTool.PlayButton()
-        Me.Play1_Rev_Button = New VideoSegmentationTool.PlayButton()
-        Me.Play2_Rev_Button = New VideoSegmentationTool.PlayButton()
-        Me.Play3_Rev_Button = New VideoSegmentationTool.PlayButton()
         Me.Splitter3 = New System.Windows.Forms.Splitter()
         Me.MenuStrip1 = New System.Windows.Forms.MenuStrip()
         Me.AboutToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.Play1_Rev_Button = New ControlsLibrary.PlayButton()
+        Me.Play1_Button = New ControlsLibrary.PlayButton()
+        Me.Play2_Rev_Button = New ControlsLibrary.PlayButton()
+        Me.Play2_Button = New ControlsLibrary.PlayButton()
+        Me.Play3_Rev_Button = New ControlsLibrary.PlayButton()
+        Me.Play3_Button = New ControlsLibrary.PlayButton()
         CType(Me.ImageBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.Video_TrackBar, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.TableLayoutPanel1.SuspendLayout()
@@ -302,12 +302,12 @@ Partial Class MainForm
         Me.TableLayoutPanel4.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 50.0!))
         Me.TableLayoutPanel4.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 50.0!))
         Me.TableLayoutPanel4.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25.0!))
-        Me.TableLayoutPanel4.Controls.Add(Me.Play1_Button, 2, 0)
-        Me.TableLayoutPanel4.Controls.Add(Me.Play2_Button, 5, 0)
-        Me.TableLayoutPanel4.Controls.Add(Me.Play3_Button, 8, 0)
         Me.TableLayoutPanel4.Controls.Add(Me.Play1_Rev_Button, 1, 0)
+        Me.TableLayoutPanel4.Controls.Add(Me.Play1_Button, 2, 0)
         Me.TableLayoutPanel4.Controls.Add(Me.Play2_Rev_Button, 4, 0)
+        Me.TableLayoutPanel4.Controls.Add(Me.Play2_Button, 5, 0)
         Me.TableLayoutPanel4.Controls.Add(Me.Play3_Rev_Button, 7, 0)
+        Me.TableLayoutPanel4.Controls.Add(Me.Play3_Button, 8, 0)
         Me.TableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill
         Me.TableLayoutPanel4.Location = New System.Drawing.Point(3, 410)
         Me.TableLayoutPanel4.Name = "TableLayoutPanel4"
@@ -315,72 +315,6 @@ Partial Class MainForm
         Me.TableLayoutPanel4.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
         Me.TableLayoutPanel4.Size = New System.Drawing.Size(603, 34)
         Me.TableLayoutPanel4.TabIndex = 16
-        '
-        'Play1_Button
-        '
-        Me.Play1_Button.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.Play1_Button.Enabled = False
-        Me.Play1_Button.Location = New System.Drawing.Point(128, 3)
-        Me.Play1_Button.Name = "Play1_Button"
-        Me.Play1_Button.Size = New System.Drawing.Size(44, 28)
-        Me.Play1_Button.TabIndex = 0
-        Me.Play1_Button.UseVisualStyleBackColor = True
-        Me.Play1_Button.ViewMode = VideoSegmentationTool.PlayButton.ViewModes.Play
-        '
-        'Play2_Button
-        '
-        Me.Play2_Button.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.Play2_Button.Enabled = False
-        Me.Play2_Button.Location = New System.Drawing.Point(303, 3)
-        Me.Play2_Button.Name = "Play2_Button"
-        Me.Play2_Button.Size = New System.Drawing.Size(44, 28)
-        Me.Play2_Button.TabIndex = 1
-        Me.Play2_Button.UseVisualStyleBackColor = True
-        Me.Play2_Button.ViewMode = VideoSegmentationTool.PlayButton.ViewModes.Play
-        '
-        'Play3_Button
-        '
-        Me.Play3_Button.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.Play3_Button.Enabled = False
-        Me.Play3_Button.Location = New System.Drawing.Point(478, 3)
-        Me.Play3_Button.Name = "Play3_Button"
-        Me.Play3_Button.Size = New System.Drawing.Size(44, 28)
-        Me.Play3_Button.TabIndex = 2
-        Me.Play3_Button.UseVisualStyleBackColor = True
-        Me.Play3_Button.ViewMode = VideoSegmentationTool.PlayButton.ViewModes.Play
-        '
-        'Play1_Rev_Button
-        '
-        Me.Play1_Rev_Button.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.Play1_Rev_Button.Enabled = False
-        Me.Play1_Rev_Button.Location = New System.Drawing.Point(78, 3)
-        Me.Play1_Rev_Button.Name = "Play1_Rev_Button"
-        Me.Play1_Rev_Button.Size = New System.Drawing.Size(44, 28)
-        Me.Play1_Rev_Button.TabIndex = 3
-        Me.Play1_Rev_Button.UseVisualStyleBackColor = True
-        Me.Play1_Rev_Button.ViewMode = VideoSegmentationTool.PlayButton.ViewModes.Reverse
-        '
-        'Play2_Rev_Button
-        '
-        Me.Play2_Rev_Button.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.Play2_Rev_Button.Enabled = False
-        Me.Play2_Rev_Button.Location = New System.Drawing.Point(253, 3)
-        Me.Play2_Rev_Button.Name = "Play2_Rev_Button"
-        Me.Play2_Rev_Button.Size = New System.Drawing.Size(44, 28)
-        Me.Play2_Rev_Button.TabIndex = 4
-        Me.Play2_Rev_Button.UseVisualStyleBackColor = True
-        Me.Play2_Rev_Button.ViewMode = VideoSegmentationTool.PlayButton.ViewModes.Reverse
-        '
-        'Play3_Rev_Button
-        '
-        Me.Play3_Rev_Button.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.Play3_Rev_Button.Enabled = False
-        Me.Play3_Rev_Button.Location = New System.Drawing.Point(428, 3)
-        Me.Play3_Rev_Button.Name = "Play3_Rev_Button"
-        Me.Play3_Rev_Button.Size = New System.Drawing.Size(44, 28)
-        Me.Play3_Rev_Button.TabIndex = 5
-        Me.Play3_Rev_Button.UseVisualStyleBackColor = True
-        Me.Play3_Rev_Button.ViewMode = VideoSegmentationTool.PlayButton.ViewModes.Reverse
         '
         'Splitter3
         '
@@ -409,6 +343,72 @@ Partial Class MainForm
         Me.AboutToolStripMenuItem.Name = "AboutToolStripMenuItem"
         Me.AboutToolStripMenuItem.Size = New System.Drawing.Size(52, 20)
         Me.AboutToolStripMenuItem.Text = "About"
+        '
+        'Play1_Rev_Button
+        '
+        Me.Play1_Rev_Button.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.Play1_Rev_Button.Enabled = False
+        Me.Play1_Rev_Button.Location = New System.Drawing.Point(78, 3)
+        Me.Play1_Rev_Button.Name = "Play1_Rev_Button"
+        Me.Play1_Rev_Button.Size = New System.Drawing.Size(44, 28)
+        Me.Play1_Rev_Button.TabIndex = 0
+        Me.Play1_Rev_Button.UseVisualStyleBackColor = True
+        Me.Play1_Rev_Button.ViewMode = ControlsLibrary.PlayButton.ViewModes.Reverse
+        '
+        'Play1_Button
+        '
+        Me.Play1_Button.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.Play1_Button.Enabled = False
+        Me.Play1_Button.Location = New System.Drawing.Point(128, 3)
+        Me.Play1_Button.Name = "Play1_Button"
+        Me.Play1_Button.Size = New System.Drawing.Size(44, 28)
+        Me.Play1_Button.TabIndex = 1
+        Me.Play1_Button.UseVisualStyleBackColor = True
+        Me.Play1_Button.ViewMode = ControlsLibrary.PlayButton.ViewModes.Play
+        '
+        'Play2_Rev_Button
+        '
+        Me.Play2_Rev_Button.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.Play2_Rev_Button.Enabled = False
+        Me.Play2_Rev_Button.Location = New System.Drawing.Point(253, 3)
+        Me.Play2_Rev_Button.Name = "Play2_Rev_Button"
+        Me.Play2_Rev_Button.Size = New System.Drawing.Size(44, 28)
+        Me.Play2_Rev_Button.TabIndex = 2
+        Me.Play2_Rev_Button.UseVisualStyleBackColor = True
+        Me.Play2_Rev_Button.ViewMode = ControlsLibrary.PlayButton.ViewModes.Reverse
+        '
+        'Play2_Button
+        '
+        Me.Play2_Button.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.Play2_Button.Enabled = False
+        Me.Play2_Button.Location = New System.Drawing.Point(303, 3)
+        Me.Play2_Button.Name = "Play2_Button"
+        Me.Play2_Button.Size = New System.Drawing.Size(44, 28)
+        Me.Play2_Button.TabIndex = 3
+        Me.Play2_Button.UseVisualStyleBackColor = True
+        Me.Play2_Button.ViewMode = ControlsLibrary.PlayButton.ViewModes.Play
+        '
+        'Play3_Rev_Button
+        '
+        Me.Play3_Rev_Button.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.Play3_Rev_Button.Enabled = False
+        Me.Play3_Rev_Button.Location = New System.Drawing.Point(428, 3)
+        Me.Play3_Rev_Button.Name = "Play3_Rev_Button"
+        Me.Play3_Rev_Button.Size = New System.Drawing.Size(44, 28)
+        Me.Play3_Rev_Button.TabIndex = 4
+        Me.Play3_Rev_Button.UseVisualStyleBackColor = True
+        Me.Play3_Rev_Button.ViewMode = ControlsLibrary.PlayButton.ViewModes.Reverse
+        '
+        'Play3_Button
+        '
+        Me.Play3_Button.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.Play3_Button.Enabled = False
+        Me.Play3_Button.Location = New System.Drawing.Point(478, 3)
+        Me.Play3_Button.Name = "Play3_Button"
+        Me.Play3_Button.Size = New System.Drawing.Size(44, 28)
+        Me.Play3_Button.TabIndex = 5
+        Me.Play3_Button.UseVisualStyleBackColor = True
+        Me.Play3_Button.ViewMode = ControlsLibrary.PlayButton.ViewModes.Play
         '
         'MainForm
         '
@@ -461,10 +461,10 @@ Partial Class MainForm
     Friend WithEvents AboutToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents CurrentLocation_Label As Label
     Friend WithEvents TableLayoutPanel4 As TableLayoutPanel
-    Friend WithEvents Play1_Button As PlayButton
-    Friend WithEvents Play2_Button As PlayButton
-    Friend WithEvents Play3_Button As PlayButton
-    Friend WithEvents Play1_Rev_Button As PlayButton
-    Friend WithEvents Play2_Rev_Button As PlayButton
-    Friend WithEvents Play3_Rev_Button As PlayButton
+    Friend WithEvents Play1_Rev_Button As ControlsLibrary.PlayButton
+    Friend WithEvents Play1_Button As ControlsLibrary.PlayButton
+    Friend WithEvents Play2_Rev_Button As ControlsLibrary.PlayButton
+    Friend WithEvents Play2_Button As ControlsLibrary.PlayButton
+    Friend WithEvents Play3_Rev_Button As ControlsLibrary.PlayButton
+    Friend WithEvents Play3_Button As ControlsLibrary.PlayButton
 End Class
