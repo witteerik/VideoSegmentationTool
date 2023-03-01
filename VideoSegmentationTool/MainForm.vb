@@ -15,12 +15,18 @@ Public Class MainForm
     Private CurrentStartFrame As Integer = -1
     Private CurrentEndFrame As Integer = -1
     Private CurrentFrameRate As Integer
+    Private LinePlot As ControlsLibrary.LineDiagram
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
         ImageBox1.SizeMode = PictureBoxSizeMode.Zoom
         Video_TrackBar.Minimum = 0
         CurrentLocation_Label.Text = ""
+
+        LinePlot = New ControlsLibrary.LineDiagram With {.PlotAreaRelativeMarginLeft = 0.0105, .PlotAreaRelativeMarginRight = 0.0105}
+        Video_TableLayoutPanel.Controls.Add(LinePlot, 0, 1)
+        Video_TableLayoutPanel.SetColumnSpan(LinePlot, 3)
+        LinePlot.Dock = DockStyle.Fill
 
     End Sub
 
@@ -123,20 +129,24 @@ Public Class MainForm
         'Looks in the Result_TextBox for segmentation data
         LookForSegmentationResult()
 
-        'Calculates the difference vector
-        Dim DifferenceVector = CalculateDifferenceVector()
+        'Calculates and draws the difference vector
+        Dim DifferenceVector = CalculateNormalizedDifferenceVector()
+        LinePlot.DrawLineAndPointData(DifferenceVector.Item1.ToArray, DifferenceVector.Item2.ToArray)
 
         CheckAndUnlockPlayButtons()
 
     End Sub
 
-    Public Function CalculateDifferenceVector() As List(Of Double)
+    Public Function CalculateNormalizedDifferenceVector() As Tuple(Of List(Of Single), List(Of Single))
 
-        Dim ResultList As New List(Of Double)
+        Dim ResultListX As New List(Of Single)
+        Dim ResultListY As New List(Of Single)
 
         If CurrentVideo IsNot Nothing Then
 
             Try
+
+                Dim Ymax As Single = Single.Epsilon
 
                 'Getting the index of the frame to display
                 If Video_TrackBar.Value < CurrentVideo.Get(CapProp.FrameCount) Then
@@ -148,11 +158,11 @@ Public Class MainForm
                 Dim FrameCount As Integer = CurrentVideo.Get(CapProp.FrameCount)
 
                 'Returns the empty list if no, or only one frame exist
-                If FrameCount < 2 Then
-                    Return ResultList
+                If FrameCount < 8 Then
+                    Return New Tuple(Of List(Of Single), List(Of Single))(ResultListX, ResultListY)
                 End If
 
-                For frameIndex = 0 To FrameCount - 2
+                For frameIndex = 1 To FrameCount - 2 Step 6
 
                     CurrentVideo.Set(CapProp.PosFrames, frameIndex)
                     Dim FirstImage As Image(Of Bgr, Byte) = New Image(Of Bgr, Byte)(CurrentVideo.Width, CurrentVideo.Height, New Bgr(255, 0, 0))
@@ -164,21 +174,31 @@ Public Class MainForm
 
                     Dim AbsoluteDifference = FirstImage.AbsDiff(SecondImage)
                     Dim ColorChannelSum = AbsoluteDifference.GetSum()
-                    Dim ColorDifferenceSum = ColorChannelSum.Blue + ColorChannelSum.Red + ColorChannelSum.Green
+                    Dim ColorDifferenceSum As Single = Math.Min(Single.MaxValue, ColorChannelSum.Blue + ColorChannelSum.Red + ColorChannelSum.Green)
 
-                    ResultList.Add(ColorDifferenceSum)
+                    Ymax = Math.Max(Ymax, ColorDifferenceSum)
 
+                    ResultListY.Add(ColorDifferenceSum)
+                    ResultListX.Add(frameIndex)
+
+                Next
+
+                'Normalizing
+                For i = 0 To ResultListY.Count - 1
+                    ResultListY(i) /= Ymax
                 Next
 
             Catch ex As Exception
                 'Returns an empty list if something went wrong
-                Return New List(Of Double)
+                Return New Tuple(Of List(Of Single), List(Of Single))(New List(Of Single), New List(Of Single))
 
             End Try
 
         End If
 
-        Return ResultList
+        'System.IO.File.WriteAllText("C:\Temp\Segm.txt", String.Join(vbCrLf, ResultList))
+
+        Return New Tuple(Of List(Of Single), List(Of Single))(ResultListX, ResultListY)
 
     End Function
 
@@ -349,7 +369,7 @@ Public Class MainForm
 
     End Sub
 
-    Private Sub Play_Button_Click(sender As Object, e As EventArgs)
+    Private Sub Play_Button_Click(sender As Object, e As EventArgs) Handles Play1_Button.Click, Play1_Rev_Button.Click, Play2_Button.Click, Play2_Rev_Button.Click, Play3_Button.Click, Play3_Rev_Button.Click
 
         Dim CastSender = DirectCast(sender, ControlsLibrary.PlayButton)
 

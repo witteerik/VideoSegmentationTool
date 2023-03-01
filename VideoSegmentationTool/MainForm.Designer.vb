@@ -40,24 +40,24 @@ Partial Class MainForm
         Me.Panel2 = New System.Windows.Forms.Panel()
         Me.TableLayoutPanel3 = New System.Windows.Forms.TableLayoutPanel()
         Me.Splitter4 = New System.Windows.Forms.Splitter()
-        Me.TableLayoutPanel2 = New System.Windows.Forms.TableLayoutPanel()
+        Me.Video_TableLayoutPanel = New System.Windows.Forms.TableLayoutPanel()
         Me.CurrentLocation_Label = New System.Windows.Forms.Label()
         Me.TableLayoutPanel4 = New System.Windows.Forms.TableLayoutPanel()
-        Me.Splitter3 = New System.Windows.Forms.Splitter()
-        Me.MenuStrip1 = New System.Windows.Forms.MenuStrip()
-        Me.AboutToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.Play1_Rev_Button = New ControlsLibrary.PlayButton()
         Me.Play1_Button = New ControlsLibrary.PlayButton()
         Me.Play2_Rev_Button = New ControlsLibrary.PlayButton()
         Me.Play2_Button = New ControlsLibrary.PlayButton()
         Me.Play3_Rev_Button = New ControlsLibrary.PlayButton()
         Me.Play3_Button = New ControlsLibrary.PlayButton()
+        Me.Splitter3 = New System.Windows.Forms.Splitter()
+        Me.MenuStrip1 = New System.Windows.Forms.MenuStrip()
+        Me.AboutToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         CType(Me.ImageBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.Video_TrackBar, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.TableLayoutPanel1.SuspendLayout()
         Me.Panel2.SuspendLayout()
         Me.TableLayoutPanel3.SuspendLayout()
-        Me.TableLayoutPanel2.SuspendLayout()
+        Me.Video_TableLayoutPanel.SuspendLayout()
         Me.TableLayoutPanel4.SuspendLayout()
         Me.MenuStrip1.SuspendLayout()
         Me.SuspendLayout()
@@ -65,11 +65,11 @@ Partial Class MainForm
         'ImageBox1
         '
         Me.ImageBox1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
-        Me.TableLayoutPanel2.SetColumnSpan(Me.ImageBox1, 4)
+        Me.Video_TableLayoutPanel.SetColumnSpan(Me.ImageBox1, 4)
         Me.ImageBox1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.ImageBox1.Location = New System.Drawing.Point(3, 3)
         Me.ImageBox1.Name = "ImageBox1"
-        Me.ImageBox1.Size = New System.Drawing.Size(603, 361)
+        Me.ImageBox1.Size = New System.Drawing.Size(603, 291)
         Me.ImageBox1.TabIndex = 2
         Me.ImageBox1.TabStop = False
         '
@@ -78,7 +78,7 @@ Partial Class MainForm
         Me.Next_Button.Dock = System.Windows.Forms.DockStyle.Fill
         Me.Next_Button.Location = New System.Drawing.Point(185, 450)
         Me.Next_Button.Name = "Next_Button"
-        Me.TableLayoutPanel2.SetRowSpan(Me.Next_Button, 2)
+        Me.Video_TableLayoutPanel.SetRowSpan(Me.Next_Button, 2)
         Me.Next_Button.Size = New System.Drawing.Size(176, 54)
         Me.Next_Button.TabIndex = 3
         Me.Next_Button.Text = "Next video"
@@ -86,7 +86,7 @@ Partial Class MainForm
         '
         'Video_TrackBar
         '
-        Me.TableLayoutPanel2.SetColumnSpan(Me.Video_TrackBar, 3)
+        Me.Video_TableLayoutPanel.SetColumnSpan(Me.Video_TrackBar, 3)
         Me.Video_TrackBar.Dock = System.Windows.Forms.DockStyle.Fill
         Me.Video_TrackBar.Location = New System.Drawing.Point(3, 370)
         Me.Video_TrackBar.Name = "Video_TrackBar"
@@ -177,7 +177,7 @@ Partial Class MainForm
         Me.Previous_Button.Dock = System.Windows.Forms.DockStyle.Fill
         Me.Previous_Button.Location = New System.Drawing.Point(3, 450)
         Me.Previous_Button.Name = "Previous_Button"
-        Me.TableLayoutPanel2.SetRowSpan(Me.Previous_Button, 2)
+        Me.Video_TableLayoutPanel.SetRowSpan(Me.Previous_Button, 2)
         Me.Previous_Button.Size = New System.Drawing.Size(176, 54)
         Me.Previous_Button.TabIndex = 14
         Me.Previous_Button.Text = "Previous video"
@@ -217,7 +217,7 @@ Partial Class MainForm
         '
         Me.Panel2.Controls.Add(Me.TableLayoutPanel3)
         Me.Panel2.Controls.Add(Me.Splitter4)
-        Me.Panel2.Controls.Add(Me.TableLayoutPanel2)
+        Me.Panel2.Controls.Add(Me.Video_TableLayoutPanel)
         Me.Panel2.Controls.Add(Me.Splitter3)
         Me.Panel2.Controls.Add(Me.TableLayoutPanel1)
         Me.Panel2.Dock = System.Windows.Forms.DockStyle.Fill
@@ -249,34 +249,35 @@ Partial Class MainForm
         Me.Splitter4.TabIndex = 19
         Me.Splitter4.TabStop = False
         '
-        'TableLayoutPanel2
+        'Video_TableLayoutPanel
         '
-        Me.TableLayoutPanel2.ColumnCount = 4
-        Me.TableLayoutPanel2.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30.0!))
-        Me.TableLayoutPanel2.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30.0!))
-        Me.TableLayoutPanel2.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30.0!))
-        Me.TableLayoutPanel2.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10.0!))
-        Me.TableLayoutPanel2.Controls.Add(Me.ImageBox1, 0, 0)
-        Me.TableLayoutPanel2.Controls.Add(Me.End_TextBox, 3, 4)
-        Me.TableLayoutPanel2.Controls.Add(Me.LockEnd_Button, 2, 4)
-        Me.TableLayoutPanel2.Controls.Add(Me.Start_TextBox, 3, 3)
-        Me.TableLayoutPanel2.Controls.Add(Me.Video_TrackBar, 0, 1)
-        Me.TableLayoutPanel2.Controls.Add(Me.LockStart_Button, 2, 3)
-        Me.TableLayoutPanel2.Controls.Add(Me.Next_Button, 1, 3)
-        Me.TableLayoutPanel2.Controls.Add(Me.Previous_Button, 0, 3)
-        Me.TableLayoutPanel2.Controls.Add(Me.CurrentLocation_Label, 3, 1)
-        Me.TableLayoutPanel2.Controls.Add(Me.TableLayoutPanel4, 0, 2)
-        Me.TableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Left
-        Me.TableLayoutPanel2.Location = New System.Drawing.Point(240, 0)
-        Me.TableLayoutPanel2.Name = "TableLayoutPanel2"
-        Me.TableLayoutPanel2.RowCount = 5
-        Me.TableLayoutPanel2.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
-        Me.TableLayoutPanel2.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40.0!))
-        Me.TableLayoutPanel2.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40.0!))
-        Me.TableLayoutPanel2.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30.0!))
-        Me.TableLayoutPanel2.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30.0!))
-        Me.TableLayoutPanel2.Size = New System.Drawing.Size(609, 507)
-        Me.TableLayoutPanel2.TabIndex = 18
+        Me.Video_TableLayoutPanel.ColumnCount = 4
+        Me.Video_TableLayoutPanel.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30.0!))
+        Me.Video_TableLayoutPanel.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30.0!))
+        Me.Video_TableLayoutPanel.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30.0!))
+        Me.Video_TableLayoutPanel.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10.0!))
+        Me.Video_TableLayoutPanel.Controls.Add(Me.ImageBox1, 0, 0)
+        Me.Video_TableLayoutPanel.Controls.Add(Me.End_TextBox, 3, 5)
+        Me.Video_TableLayoutPanel.Controls.Add(Me.LockEnd_Button, 2, 5)
+        Me.Video_TableLayoutPanel.Controls.Add(Me.Start_TextBox, 3, 4)
+        Me.Video_TableLayoutPanel.Controls.Add(Me.Video_TrackBar, 0, 2)
+        Me.Video_TableLayoutPanel.Controls.Add(Me.LockStart_Button, 2, 4)
+        Me.Video_TableLayoutPanel.Controls.Add(Me.Next_Button, 1, 4)
+        Me.Video_TableLayoutPanel.Controls.Add(Me.Previous_Button, 0, 4)
+        Me.Video_TableLayoutPanel.Controls.Add(Me.CurrentLocation_Label, 3, 2)
+        Me.Video_TableLayoutPanel.Controls.Add(Me.TableLayoutPanel4, 0, 3)
+        Me.Video_TableLayoutPanel.Dock = System.Windows.Forms.DockStyle.Left
+        Me.Video_TableLayoutPanel.Location = New System.Drawing.Point(240, 0)
+        Me.Video_TableLayoutPanel.Name = "Video_TableLayoutPanel"
+        Me.Video_TableLayoutPanel.RowCount = 6
+        Me.Video_TableLayoutPanel.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
+        Me.Video_TableLayoutPanel.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 70.0!))
+        Me.Video_TableLayoutPanel.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40.0!))
+        Me.Video_TableLayoutPanel.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40.0!))
+        Me.Video_TableLayoutPanel.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30.0!))
+        Me.Video_TableLayoutPanel.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30.0!))
+        Me.Video_TableLayoutPanel.Size = New System.Drawing.Size(609, 507)
+        Me.Video_TableLayoutPanel.TabIndex = 18
         '
         'CurrentLocation_Label
         '
@@ -291,7 +292,7 @@ Partial Class MainForm
         'TableLayoutPanel4
         '
         Me.TableLayoutPanel4.ColumnCount = 10
-        Me.TableLayoutPanel2.SetColumnSpan(Me.TableLayoutPanel4, 4)
+        Me.Video_TableLayoutPanel.SetColumnSpan(Me.TableLayoutPanel4, 4)
         Me.TableLayoutPanel4.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25.0!))
         Me.TableLayoutPanel4.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 50.0!))
         Me.TableLayoutPanel4.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 50.0!))
@@ -315,34 +316,6 @@ Partial Class MainForm
         Me.TableLayoutPanel4.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
         Me.TableLayoutPanel4.Size = New System.Drawing.Size(603, 34)
         Me.TableLayoutPanel4.TabIndex = 16
-        '
-        'Splitter3
-        '
-        Me.Splitter3.Location = New System.Drawing.Point(233, 0)
-        Me.Splitter3.MinExtra = 7
-        Me.Splitter3.MinSize = 7
-        Me.Splitter3.Name = "Splitter3"
-        Me.Splitter3.Size = New System.Drawing.Size(7, 507)
-        Me.Splitter3.TabIndex = 17
-        Me.Splitter3.TabStop = False
-        '
-        'MenuStrip1
-        '
-        Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.AboutToolStripMenuItem})
-        Me.MenuStrip1.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.HorizontalStackWithOverflow
-        Me.MenuStrip1.Location = New System.Drawing.Point(0, 0)
-        Me.MenuStrip1.Name = "MenuStrip1"
-        Me.MenuStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.System
-        Me.MenuStrip1.RightToLeft = System.Windows.Forms.RightToLeft.Yes
-        Me.MenuStrip1.Size = New System.Drawing.Size(1102, 24)
-        Me.MenuStrip1.TabIndex = 19
-        Me.MenuStrip1.Text = "MenuStrip1"
-        '
-        'AboutToolStripMenuItem
-        '
-        Me.AboutToolStripMenuItem.Name = "AboutToolStripMenuItem"
-        Me.AboutToolStripMenuItem.Size = New System.Drawing.Size(52, 20)
-        Me.AboutToolStripMenuItem.Text = "About"
         '
         'Play1_Rev_Button
         '
@@ -410,6 +383,34 @@ Partial Class MainForm
         Me.Play3_Button.UseVisualStyleBackColor = True
         Me.Play3_Button.ViewMode = ControlsLibrary.PlayButton.ViewModes.Play
         '
+        'Splitter3
+        '
+        Me.Splitter3.Location = New System.Drawing.Point(233, 0)
+        Me.Splitter3.MinExtra = 7
+        Me.Splitter3.MinSize = 7
+        Me.Splitter3.Name = "Splitter3"
+        Me.Splitter3.Size = New System.Drawing.Size(7, 507)
+        Me.Splitter3.TabIndex = 17
+        Me.Splitter3.TabStop = False
+        '
+        'MenuStrip1
+        '
+        Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.AboutToolStripMenuItem})
+        Me.MenuStrip1.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.HorizontalStackWithOverflow
+        Me.MenuStrip1.Location = New System.Drawing.Point(0, 0)
+        Me.MenuStrip1.Name = "MenuStrip1"
+        Me.MenuStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.System
+        Me.MenuStrip1.RightToLeft = System.Windows.Forms.RightToLeft.Yes
+        Me.MenuStrip1.Size = New System.Drawing.Size(1102, 24)
+        Me.MenuStrip1.TabIndex = 19
+        Me.MenuStrip1.Text = "MenuStrip1"
+        '
+        'AboutToolStripMenuItem
+        '
+        Me.AboutToolStripMenuItem.Name = "AboutToolStripMenuItem"
+        Me.AboutToolStripMenuItem.Size = New System.Drawing.Size(52, 20)
+        Me.AboutToolStripMenuItem.Text = "About"
+        '
         'MainForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 15.0!)
@@ -428,8 +429,8 @@ Partial Class MainForm
         Me.Panel2.ResumeLayout(False)
         Me.TableLayoutPanel3.ResumeLayout(False)
         Me.TableLayoutPanel3.PerformLayout()
-        Me.TableLayoutPanel2.ResumeLayout(False)
-        Me.TableLayoutPanel2.PerformLayout()
+        Me.Video_TableLayoutPanel.ResumeLayout(False)
+        Me.Video_TableLayoutPanel.PerformLayout()
         Me.TableLayoutPanel4.ResumeLayout(False)
         Me.MenuStrip1.ResumeLayout(False)
         Me.MenuStrip1.PerformLayout()
@@ -455,7 +456,7 @@ Partial Class MainForm
     Friend WithEvents Panel2 As Panel
     Friend WithEvents TableLayoutPanel3 As TableLayoutPanel
     Friend WithEvents Splitter4 As Splitter
-    Friend WithEvents TableLayoutPanel2 As TableLayoutPanel
+    Friend WithEvents Video_TableLayoutPanel As TableLayoutPanel
     Friend WithEvents Splitter3 As Splitter
     Friend WithEvents MenuStrip1 As MenuStrip
     Friend WithEvents AboutToolStripMenuItem As ToolStripMenuItem
