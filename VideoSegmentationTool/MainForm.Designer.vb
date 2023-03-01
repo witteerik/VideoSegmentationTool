@@ -69,7 +69,7 @@ Partial Class MainForm
         Me.ImageBox1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.ImageBox1.Location = New System.Drawing.Point(3, 3)
         Me.ImageBox1.Name = "ImageBox1"
-        Me.ImageBox1.Size = New System.Drawing.Size(603, 291)
+        Me.ImageBox1.Size = New System.Drawing.Size(603, 261)
         Me.ImageBox1.TabIndex = 2
         Me.ImageBox1.TabStop = False
         '
@@ -271,7 +271,7 @@ Partial Class MainForm
         Me.Video_TableLayoutPanel.Name = "Video_TableLayoutPanel"
         Me.Video_TableLayoutPanel.RowCount = 6
         Me.Video_TableLayoutPanel.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
-        Me.Video_TableLayoutPanel.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 70.0!))
+        Me.Video_TableLayoutPanel.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 100.0!))
         Me.Video_TableLayoutPanel.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40.0!))
         Me.Video_TableLayoutPanel.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40.0!))
         Me.Video_TableLayoutPanel.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30.0!))

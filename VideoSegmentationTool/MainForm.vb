@@ -23,10 +23,17 @@ Public Class MainForm
         Video_TrackBar.Minimum = 0
         CurrentLocation_Label.Text = ""
 
-        LinePlot = New ControlsLibrary.LineDiagram With {.PlotAreaRelativeMarginLeft = 0.0105, .PlotAreaRelativeMarginRight = 0.0105}
-        Video_TableLayoutPanel.Controls.Add(LinePlot, 0, 1)
-        Video_TableLayoutPanel.SetColumnSpan(LinePlot, 3)
+        Dim LinePlotPanel As New Panel
+        LinePlotPanel.Dock = DockStyle.Fill
+        LinePlotPanel.Padding = New Padding(13, 0, 13, 0)
+        Video_TableLayoutPanel.Controls.Add(LinePlotPanel, 0, 1)
+        Video_TableLayoutPanel.SetColumnSpan(LinePlotPanel, 3)
+
+        LinePlot = New ControlsLibrary.LineDiagram With {.PlotAreaRelativeMarginLeft = 0, .PlotAreaRelativeMarginRight = 0}
+        'LinePlot.PlotAreaBorderColor = Color.Transparent
         LinePlot.Dock = DockStyle.Fill
+        LinePlotPanel.Controls.Add(LinePlot)
+        LinePlot.BorderStyle = BorderStyle.FixedSingle
 
     End Sub
 
@@ -104,6 +111,9 @@ Public Class MainForm
         If FileName_ListBox.SelectedIndex > FileName_ListBox.Items.Count - 1 Then Exit Sub
 
         CheckAndUnlockPlayButtons()
+        EnableControls(False)
+
+        LinePlot.ClearLines()
 
         CurrentPath = System.IO.Path.Combine(CurrentVideoFolder, FileName_ListBox.SelectedItems(0))
 
@@ -133,6 +143,7 @@ Public Class MainForm
         Dim DifferenceVector = CalculateNormalizedDifferenceVector()
         LinePlot.DrawLineAndPointData(DifferenceVector.Item1.ToArray, DifferenceVector.Item2.ToArray)
 
+        EnableControls(True)
         CheckAndUnlockPlayButtons()
 
     End Sub

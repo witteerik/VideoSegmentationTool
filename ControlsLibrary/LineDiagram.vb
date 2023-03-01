@@ -79,6 +79,19 @@ Imports Microsoft.VisualBasic.Devices
 
     End Sub
 
+    Public Sub ClearLines()
+
+        'Clearing any previously stored data
+        PointSeries.Clear()
+        Lines.Clear()
+
+        'Updates the layout
+        Invalidate()
+        Update()
+
+    End Sub
+
+
 
 #End Region
 
