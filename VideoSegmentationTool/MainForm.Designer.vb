@@ -52,6 +52,14 @@ Partial Class MainForm
         Me.Play3_Rev_Button = New ControlsLibrary.PlayButton()
         Me.Play3_Button = New ControlsLibrary.PlayButton()
         Me.DistanceVector_CheckBox = New System.Windows.Forms.CheckBox()
+        Me.TableLayoutPanel2 = New System.Windows.Forms.TableLayoutPanel()
+        Me.Label2 = New System.Windows.Forms.Label()
+        Me.AutoPlay_1R_CheckBox = New System.Windows.Forms.CheckBox()
+        Me.AutoPlay_1F_CheckBox = New System.Windows.Forms.CheckBox()
+        Me.AutoPlay_2R_CheckBox = New System.Windows.Forms.CheckBox()
+        Me.AutoPlay_2F_CheckBox = New System.Windows.Forms.CheckBox()
+        Me.AutoPlay_3R_CheckBox = New System.Windows.Forms.CheckBox()
+        Me.AutoPlay_3F_CheckBox = New System.Windows.Forms.CheckBox()
         Me.Splitter3 = New System.Windows.Forms.Splitter()
         Me.MenuStrip1 = New System.Windows.Forms.MenuStrip()
         Me.AboutToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -62,6 +70,7 @@ Partial Class MainForm
         Me.TableLayoutPanel3.SuspendLayout()
         Me.Video_TableLayoutPanel.SuspendLayout()
         Me.TableLayoutPanel4.SuspendLayout()
+        Me.TableLayoutPanel2.SuspendLayout()
         Me.MenuStrip1.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -72,7 +81,7 @@ Partial Class MainForm
         Me.ImageBox1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.ImageBox1.Location = New System.Drawing.Point(3, 3)
         Me.ImageBox1.Name = "ImageBox1"
-        Me.ImageBox1.Size = New System.Drawing.Size(603, 248)
+        Me.ImageBox1.Size = New System.Drawing.Size(603, 218)
         Me.ImageBox1.TabIndex = 2
         Me.ImageBox1.TabStop = False
         '
@@ -91,7 +100,7 @@ Partial Class MainForm
         '
         Me.Video_TableLayoutPanel.SetColumnSpan(Me.Video_TrackBar, 3)
         Me.Video_TrackBar.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.Video_TrackBar.Location = New System.Drawing.Point(3, 357)
+        Me.Video_TrackBar.Location = New System.Drawing.Point(3, 327)
         Me.Video_TrackBar.Name = "Video_TrackBar"
         Me.Video_TrackBar.Size = New System.Drawing.Size(540, 34)
         Me.Video_TrackBar.TabIndex = 4
@@ -284,24 +293,26 @@ Partial Class MainForm
         Me.Video_TableLayoutPanel.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30.0!))
         Me.Video_TableLayoutPanel.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10.0!))
         Me.Video_TableLayoutPanel.Controls.Add(Me.ImageBox1, 0, 0)
-        Me.Video_TableLayoutPanel.Controls.Add(Me.End_TextBox, 3, 5)
-        Me.Video_TableLayoutPanel.Controls.Add(Me.LockEnd_Button, 2, 5)
-        Me.Video_TableLayoutPanel.Controls.Add(Me.Start_TextBox, 3, 4)
+        Me.Video_TableLayoutPanel.Controls.Add(Me.End_TextBox, 3, 6)
+        Me.Video_TableLayoutPanel.Controls.Add(Me.LockEnd_Button, 2, 6)
+        Me.Video_TableLayoutPanel.Controls.Add(Me.Start_TextBox, 3, 5)
         Me.Video_TableLayoutPanel.Controls.Add(Me.Video_TrackBar, 0, 2)
-        Me.Video_TableLayoutPanel.Controls.Add(Me.LockStart_Button, 2, 4)
-        Me.Video_TableLayoutPanel.Controls.Add(Me.Next_Button, 1, 4)
-        Me.Video_TableLayoutPanel.Controls.Add(Me.Previous_Button, 0, 4)
+        Me.Video_TableLayoutPanel.Controls.Add(Me.LockStart_Button, 2, 5)
+        Me.Video_TableLayoutPanel.Controls.Add(Me.Next_Button, 1, 5)
+        Me.Video_TableLayoutPanel.Controls.Add(Me.Previous_Button, 0, 5)
         Me.Video_TableLayoutPanel.Controls.Add(Me.CurrentLocation_Label, 3, 2)
         Me.Video_TableLayoutPanel.Controls.Add(Me.TableLayoutPanel4, 0, 3)
         Me.Video_TableLayoutPanel.Controls.Add(Me.DistanceVector_CheckBox, 3, 1)
+        Me.Video_TableLayoutPanel.Controls.Add(Me.TableLayoutPanel2, 0, 4)
         Me.Video_TableLayoutPanel.Dock = System.Windows.Forms.DockStyle.Left
         Me.Video_TableLayoutPanel.Location = New System.Drawing.Point(240, 0)
         Me.Video_TableLayoutPanel.Name = "Video_TableLayoutPanel"
-        Me.Video_TableLayoutPanel.RowCount = 6
+        Me.Video_TableLayoutPanel.RowCount = 7
         Me.Video_TableLayoutPanel.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
         Me.Video_TableLayoutPanel.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 100.0!))
         Me.Video_TableLayoutPanel.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40.0!))
         Me.Video_TableLayoutPanel.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40.0!))
+        Me.Video_TableLayoutPanel.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30.0!))
         Me.Video_TableLayoutPanel.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30.0!))
         Me.Video_TableLayoutPanel.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30.0!))
         Me.Video_TableLayoutPanel.Size = New System.Drawing.Size(609, 494)
@@ -310,7 +321,7 @@ Partial Class MainForm
         'CurrentLocation_Label
         '
         Me.CurrentLocation_Label.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.CurrentLocation_Label.Location = New System.Drawing.Point(549, 354)
+        Me.CurrentLocation_Label.Location = New System.Drawing.Point(549, 324)
         Me.CurrentLocation_Label.Name = "CurrentLocation_Label"
         Me.CurrentLocation_Label.Size = New System.Drawing.Size(57, 40)
         Me.CurrentLocation_Label.TabIndex = 15
@@ -341,7 +352,7 @@ Partial Class MainForm
         Me.TableLayoutPanel4.Controls.Add(Me.Play3_Rev_Button, 7, 0)
         Me.TableLayoutPanel4.Controls.Add(Me.Play3_Button, 8, 0)
         Me.TableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.TableLayoutPanel4.Location = New System.Drawing.Point(3, 397)
+        Me.TableLayoutPanel4.Location = New System.Drawing.Point(3, 367)
         Me.TableLayoutPanel4.Name = "TableLayoutPanel4"
         Me.TableLayoutPanel4.RowCount = 1
         Me.TableLayoutPanel4.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
@@ -419,13 +430,118 @@ Partial Class MainForm
         Me.DistanceVector_CheckBox.AutoSize = True
         Me.DistanceVector_CheckBox.CheckAlign = System.Drawing.ContentAlignment.MiddleCenter
         Me.DistanceVector_CheckBox.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.DistanceVector_CheckBox.Location = New System.Drawing.Point(549, 257)
+        Me.DistanceVector_CheckBox.Location = New System.Drawing.Point(549, 227)
         Me.DistanceVector_CheckBox.Name = "DistanceVector_CheckBox"
         Me.DistanceVector_CheckBox.Size = New System.Drawing.Size(57, 94)
         Me.DistanceVector_CheckBox.TabIndex = 17
         Me.DistanceVector_CheckBox.Text = "" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "On/Off"
         Me.DistanceVector_CheckBox.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         Me.DistanceVector_CheckBox.UseVisualStyleBackColor = True
+        '
+        'TableLayoutPanel2
+        '
+        Me.TableLayoutPanel2.ColumnCount = 10
+        Me.Video_TableLayoutPanel.SetColumnSpan(Me.TableLayoutPanel2, 4)
+        Me.TableLayoutPanel2.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25.0!))
+        Me.TableLayoutPanel2.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 50.0!))
+        Me.TableLayoutPanel2.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 50.0!))
+        Me.TableLayoutPanel2.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25.0!))
+        Me.TableLayoutPanel2.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 50.0!))
+        Me.TableLayoutPanel2.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 50.0!))
+        Me.TableLayoutPanel2.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25.0!))
+        Me.TableLayoutPanel2.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 50.0!))
+        Me.TableLayoutPanel2.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 50.0!))
+        Me.TableLayoutPanel2.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25.0!))
+        Me.TableLayoutPanel2.Controls.Add(Me.Label2, 0, 0)
+        Me.TableLayoutPanel2.Controls.Add(Me.AutoPlay_1R_CheckBox, 1, 0)
+        Me.TableLayoutPanel2.Controls.Add(Me.AutoPlay_1F_CheckBox, 2, 0)
+        Me.TableLayoutPanel2.Controls.Add(Me.AutoPlay_2R_CheckBox, 4, 0)
+        Me.TableLayoutPanel2.Controls.Add(Me.AutoPlay_2F_CheckBox, 5, 0)
+        Me.TableLayoutPanel2.Controls.Add(Me.AutoPlay_3R_CheckBox, 7, 0)
+        Me.TableLayoutPanel2.Controls.Add(Me.AutoPlay_3F_CheckBox, 8, 0)
+        Me.TableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.TableLayoutPanel2.Location = New System.Drawing.Point(3, 407)
+        Me.TableLayoutPanel2.Name = "TableLayoutPanel2"
+        Me.TableLayoutPanel2.RowCount = 1
+        Me.TableLayoutPanel2.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
+        Me.TableLayoutPanel2.Size = New System.Drawing.Size(603, 24)
+        Me.TableLayoutPanel2.TabIndex = 18
+        '
+        'Label2
+        '
+        Me.Label2.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.Label2.Location = New System.Drawing.Point(3, 0)
+        Me.Label2.Name = "Label2"
+        Me.Label2.Size = New System.Drawing.Size(69, 24)
+        Me.Label2.TabIndex = 0
+        Me.Label2.Text = "Autoplay"
+        Me.Label2.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        '
+        'AutoPlay_1R_CheckBox
+        '
+        Me.AutoPlay_1R_CheckBox.AutoSize = True
+        Me.AutoPlay_1R_CheckBox.CheckAlign = System.Drawing.ContentAlignment.MiddleCenter
+        Me.AutoPlay_1R_CheckBox.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.AutoPlay_1R_CheckBox.Location = New System.Drawing.Point(78, 3)
+        Me.AutoPlay_1R_CheckBox.Name = "AutoPlay_1R_CheckBox"
+        Me.AutoPlay_1R_CheckBox.Size = New System.Drawing.Size(44, 18)
+        Me.AutoPlay_1R_CheckBox.TabIndex = 1
+        Me.AutoPlay_1R_CheckBox.UseVisualStyleBackColor = True
+        '
+        'AutoPlay_1F_CheckBox
+        '
+        Me.AutoPlay_1F_CheckBox.AutoSize = True
+        Me.AutoPlay_1F_CheckBox.CheckAlign = System.Drawing.ContentAlignment.MiddleCenter
+        Me.AutoPlay_1F_CheckBox.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.AutoPlay_1F_CheckBox.Location = New System.Drawing.Point(128, 3)
+        Me.AutoPlay_1F_CheckBox.Name = "AutoPlay_1F_CheckBox"
+        Me.AutoPlay_1F_CheckBox.Size = New System.Drawing.Size(44, 18)
+        Me.AutoPlay_1F_CheckBox.TabIndex = 2
+        Me.AutoPlay_1F_CheckBox.UseVisualStyleBackColor = True
+        '
+        'AutoPlay_2R_CheckBox
+        '
+        Me.AutoPlay_2R_CheckBox.AutoSize = True
+        Me.AutoPlay_2R_CheckBox.CheckAlign = System.Drawing.ContentAlignment.MiddleCenter
+        Me.AutoPlay_2R_CheckBox.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.AutoPlay_2R_CheckBox.Location = New System.Drawing.Point(253, 3)
+        Me.AutoPlay_2R_CheckBox.Name = "AutoPlay_2R_CheckBox"
+        Me.AutoPlay_2R_CheckBox.Size = New System.Drawing.Size(44, 18)
+        Me.AutoPlay_2R_CheckBox.TabIndex = 3
+        Me.AutoPlay_2R_CheckBox.UseVisualStyleBackColor = True
+        '
+        'AutoPlay_2F_CheckBox
+        '
+        Me.AutoPlay_2F_CheckBox.AutoSize = True
+        Me.AutoPlay_2F_CheckBox.CheckAlign = System.Drawing.ContentAlignment.MiddleCenter
+        Me.AutoPlay_2F_CheckBox.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.AutoPlay_2F_CheckBox.Location = New System.Drawing.Point(303, 3)
+        Me.AutoPlay_2F_CheckBox.Name = "AutoPlay_2F_CheckBox"
+        Me.AutoPlay_2F_CheckBox.Size = New System.Drawing.Size(44, 18)
+        Me.AutoPlay_2F_CheckBox.TabIndex = 4
+        Me.AutoPlay_2F_CheckBox.UseVisualStyleBackColor = True
+        '
+        'AutoPlay_3R_CheckBox
+        '
+        Me.AutoPlay_3R_CheckBox.AutoSize = True
+        Me.AutoPlay_3R_CheckBox.CheckAlign = System.Drawing.ContentAlignment.MiddleCenter
+        Me.AutoPlay_3R_CheckBox.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.AutoPlay_3R_CheckBox.Location = New System.Drawing.Point(428, 3)
+        Me.AutoPlay_3R_CheckBox.Name = "AutoPlay_3R_CheckBox"
+        Me.AutoPlay_3R_CheckBox.Size = New System.Drawing.Size(44, 18)
+        Me.AutoPlay_3R_CheckBox.TabIndex = 5
+        Me.AutoPlay_3R_CheckBox.UseVisualStyleBackColor = True
+        '
+        'AutoPlay_3F_CheckBox
+        '
+        Me.AutoPlay_3F_CheckBox.AutoSize = True
+        Me.AutoPlay_3F_CheckBox.CheckAlign = System.Drawing.ContentAlignment.MiddleCenter
+        Me.AutoPlay_3F_CheckBox.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.AutoPlay_3F_CheckBox.Location = New System.Drawing.Point(478, 3)
+        Me.AutoPlay_3F_CheckBox.Name = "AutoPlay_3F_CheckBox"
+        Me.AutoPlay_3F_CheckBox.Size = New System.Drawing.Size(44, 18)
+        Me.AutoPlay_3F_CheckBox.TabIndex = 6
+        Me.AutoPlay_3F_CheckBox.UseVisualStyleBackColor = True
         '
         'Splitter3
         '
@@ -476,6 +592,8 @@ Partial Class MainForm
         Me.Video_TableLayoutPanel.ResumeLayout(False)
         Me.Video_TableLayoutPanel.PerformLayout()
         Me.TableLayoutPanel4.ResumeLayout(False)
+        Me.TableLayoutPanel2.ResumeLayout(False)
+        Me.TableLayoutPanel2.PerformLayout()
         Me.MenuStrip1.ResumeLayout(False)
         Me.MenuStrip1.PerformLayout()
         Me.ResumeLayout(False)
@@ -515,4 +633,12 @@ Partial Class MainForm
     Friend WithEvents Filter_Button As Button
     Friend WithEvents FileCount_Label As Label
     Friend WithEvents DistanceVector_CheckBox As CheckBox
+    Friend WithEvents TableLayoutPanel2 As TableLayoutPanel
+    Friend WithEvents Label2 As Label
+    Friend WithEvents AutoPlay_1R_CheckBox As CheckBox
+    Friend WithEvents AutoPlay_1F_CheckBox As CheckBox
+    Friend WithEvents AutoPlay_2R_CheckBox As CheckBox
+    Friend WithEvents AutoPlay_2F_CheckBox As CheckBox
+    Friend WithEvents AutoPlay_3R_CheckBox As CheckBox
+    Friend WithEvents AutoPlay_3F_CheckBox As CheckBox
 End Class

@@ -16,6 +16,7 @@ Public Class MainForm
     Private CurrentEndFrame As Integer = -1
     Private CurrentFrameRate As Integer
     Private LinePlot As ControlsLibrary.LineDiagram
+    Private IsPlaying As Boolean = False
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
@@ -75,12 +76,26 @@ Public Class MainForm
 
     Private Sub FileName_ListBox_SelectedIndexChanged(sender As Object, e As EventArgs) Handles FileName_ListBox.SelectedIndexChanged
 
+        'Stopping playback
+        If IsPlaying = True Then
+            PlayLoopTimer.Stop()
+            IsPlaying = False
+            EnableControls(True)
+        End If
+
         If SaveResults() = False Then Exit Sub
 
         SetNewVideoFile()
     End Sub
 
     Private Sub Next_Button_Click(sender As Object, e As EventArgs) Handles Next_Button.Click
+
+        'Stopping playback
+        If IsPlaying = True Then
+            PlayLoopTimer.Stop()
+            IsPlaying = False
+            EnableControls(True)
+        End If
 
         If SaveResults() = False Then Exit Sub
 
@@ -94,6 +109,13 @@ Public Class MainForm
     End Sub
 
     Private Sub Previous_Button_Click(sender As Object, e As EventArgs) Handles Previous_Button.Click
+
+        'Stopping playback
+        If IsPlaying = True Then
+            PlayLoopTimer.Stop()
+            IsPlaying = False
+            EnableControls(True)
+        End If
 
         If SaveResults() = False Then Exit Sub
 
@@ -150,8 +172,8 @@ Public Class MainForm
         EnableControls(True)
         CheckAndUnlockPlayButtons()
 
-        'Setting focus to the Video_TrackBar to enable mouse scrolling without clicking the control
-        Video_TrackBar.Focus()
+        'Runs autoplay if any of the autoplay checkboxes are checked
+        AutoPlay()
 
     End Sub
 
@@ -383,9 +405,6 @@ Public Class MainForm
 
     End Sub
 
-    Private Sub CurrentLocation_Label_Click(sender As Object, e As EventArgs) Handles CurrentLocation_Label.Click
-
-    End Sub
 
     Private Sub Play_Button_Click(sender As Object, e As EventArgs) Handles Play1_Button.Click, Play1_Rev_Button.Click, Play2_Button.Click, Play2_Rev_Button.Click, Play3_Button.Click, Play3_Rev_Button.Click
 
@@ -413,6 +432,7 @@ Public Class MainForm
 
                 'Stopping playback
                 PlayLoopTimer.Stop()
+                IsPLaying = False
                 EnableControls(True)
 
         End Select
@@ -502,9 +522,14 @@ Public Class MainForm
         'Setting timer interval depending on the vidoe frame rate
         PlayLoopTimer.Interval = Math.Max(1, 1000 * (1 / CurrentFrameRate))
 
+        IsPlaying = True
+
         PlayLoopTimer.Start()
 
+        EnableControls(False)
+
     End Sub
+
 
     Private WithEvents PlayLoopTimer As New Windows.Forms.Timer
 
@@ -516,6 +541,7 @@ Public Class MainForm
                 'This code bit is duplicated also initially in this sub, if it happens to be called before the value gets updated
                 If Video_TrackBar.Value <= PlayEndFrame Then
                     PlayLoopTimer.Stop()
+                    IsPLaying = False
                     EnableControls(True)
                     Exit Sub
                 End If
@@ -524,6 +550,7 @@ Public Class MainForm
 
                 If Video_TrackBar.Value <= PlayEndFrame Then
                     PlayLoopTimer.Stop()
+                    IsPLaying = False
                     EnableControls(True)
                 End If
 
@@ -531,6 +558,7 @@ Public Class MainForm
                 'This code bit is duplicated also initially in this sub, if it happens to be called before the value gets updated
                 If Video_TrackBar.Value >= PlayEndFrame Then
                     PlayLoopTimer.Stop()
+                    IsPLaying = False
                     EnableControls(True)
                     Exit Sub
                 End If
@@ -539,6 +567,7 @@ Public Class MainForm
 
                 If Video_TrackBar.Value >= PlayEndFrame Then
                     PlayLoopTimer.Stop()
+                    IsPLaying = False
                     EnableControls(True)
                 End If
 
@@ -572,10 +601,18 @@ Public Class MainForm
         Extensions_TextBox.Enabled = Enabled
         FileName_ListBox.Enabled = Enabled
         Result_TextBox.Enabled = Enabled
-        Previous_Button.Enabled = Enabled
-        Next_Button.Enabled = Enabled
         LockStart_Button.Enabled = Enabled
         LockEnd_Button.Enabled = Enabled
+
+
+        If IsPLaying = False Then
+            Previous_Button.Enabled = Enabled
+            Next_Button.Enabled = Enabled
+        Else
+            'These are allways enabled during playback, so to enable switching to next/previous without pressing stop
+            Previous_Button.Enabled = True
+            Next_Button.Enabled = True
+        End If
 
     End Sub
 
@@ -661,4 +698,60 @@ Public Class MainForm
         End If
 
     End Sub
+
+    Private Sub AutoPlay_CheckBox_CheckedChanged(sender As Object, e As EventArgs) Handles AutoPlay_1R_CheckBox.CheckedChanged, AutoPlay_1R_CheckBox.CheckedChanged
+
+
+    End Sub
+
+    Private Sub AutoPlay_1R_CheckBox_Click(sender As Object, e As EventArgs) Handles AutoPlay_3R_CheckBox.Click, AutoPlay_3F_CheckBox.Click, AutoPlay_2R_CheckBox.Click, AutoPlay_2F_CheckBox.Click, AutoPlay_1R_CheckBox.Click, AutoPlay_1F_CheckBox.Click
+
+        Dim CastSender = DirectCast(sender, CheckBox)
+
+        If CastSender.Checked = True Then
+            If CastSender IsNot AutoPlay_1R_CheckBox Then AutoPlay_1R_CheckBox.Checked = False
+            If CastSender IsNot AutoPlay_1F_CheckBox Then AutoPlay_1F_CheckBox.Checked = False
+            If CastSender IsNot AutoPlay_2R_CheckBox Then AutoPlay_2R_CheckBox.Checked = False
+            If CastSender IsNot AutoPlay_2F_CheckBox Then AutoPlay_2F_CheckBox.Checked = False
+            If CastSender IsNot AutoPlay_3R_CheckBox Then AutoPlay_3R_CheckBox.Checked = False
+            If CastSender IsNot AutoPlay_3F_CheckBox Then AutoPlay_3F_CheckBox.Checked = False
+        End If
+
+    End Sub
+
+    Public Sub AutoPlay()
+
+        If AutoPlay_1R_CheckBox.Checked = True Then
+            PlaySection(PlayTypes.Section1Rev)
+            Exit Sub
+        End If
+
+        If AutoPlay_1F_CheckBox.Checked = True Then
+            PlaySection(PlayTypes.Section1)
+            Exit Sub
+        End If
+
+        If AutoPlay_2R_CheckBox.Checked = True Then
+            PlaySection(PlayTypes.Section2Rev)
+            Exit Sub
+        End If
+
+        If AutoPlay_2F_CheckBox.Checked = True Then
+            PlaySection(PlayTypes.Section2)
+            Exit Sub
+        End If
+
+        If AutoPlay_3R_CheckBox.Checked = True Then
+            PlaySection(PlayTypes.Section3Rev)
+            Exit Sub
+        End If
+
+        If AutoPlay_3F_CheckBox.Checked = True Then
+            PlaySection(PlayTypes.Section3)
+            Exit Sub
+        End If
+
+    End Sub
+
+
 End Class
