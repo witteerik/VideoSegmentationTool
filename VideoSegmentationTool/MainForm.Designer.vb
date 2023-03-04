@@ -51,6 +51,7 @@ Partial Class MainForm
         Me.Play2_Button = New ControlsLibrary.PlayButton()
         Me.Play3_Rev_Button = New ControlsLibrary.PlayButton()
         Me.Play3_Button = New ControlsLibrary.PlayButton()
+        Me.Fastplay_CheckBox = New System.Windows.Forms.CheckBox()
         Me.DistanceVector_CheckBox = New System.Windows.Forms.CheckBox()
         Me.TableLayoutPanel2 = New System.Windows.Forms.TableLayoutPanel()
         Me.Label2 = New System.Windows.Forms.Label()
@@ -351,6 +352,7 @@ Partial Class MainForm
         Me.TableLayoutPanel4.Controls.Add(Me.Play2_Button, 5, 0)
         Me.TableLayoutPanel4.Controls.Add(Me.Play3_Rev_Button, 7, 0)
         Me.TableLayoutPanel4.Controls.Add(Me.Play3_Button, 8, 0)
+        Me.TableLayoutPanel4.Controls.Add(Me.Fastplay_CheckBox, 9, 0)
         Me.TableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill
         Me.TableLayoutPanel4.Location = New System.Drawing.Point(3, 367)
         Me.TableLayoutPanel4.Name = "TableLayoutPanel4"
@@ -424,6 +426,17 @@ Partial Class MainForm
         Me.Play3_Button.TabIndex = 5
         Me.Play3_Button.UseVisualStyleBackColor = True
         Me.Play3_Button.ViewMode = ControlsLibrary.PlayButton.ViewModes.Play
+        '
+        'Fastplay_CheckBox
+        '
+        Me.Fastplay_CheckBox.AutoSize = True
+        Me.Fastplay_CheckBox.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.Fastplay_CheckBox.Location = New System.Drawing.Point(528, 3)
+        Me.Fastplay_CheckBox.Name = "Fastplay_CheckBox"
+        Me.Fastplay_CheckBox.Size = New System.Drawing.Size(72, 28)
+        Me.Fastplay_CheckBox.TabIndex = 6
+        Me.Fastplay_CheckBox.Text = "Fastplay"
+        Me.Fastplay_CheckBox.UseVisualStyleBackColor = True
         '
         'DistanceVector_CheckBox
         '
@@ -592,6 +605,7 @@ Partial Class MainForm
         Me.Video_TableLayoutPanel.ResumeLayout(False)
         Me.Video_TableLayoutPanel.PerformLayout()
         Me.TableLayoutPanel4.ResumeLayout(False)
+        Me.TableLayoutPanel4.PerformLayout()
         Me.TableLayoutPanel2.ResumeLayout(False)
         Me.TableLayoutPanel2.PerformLayout()
         Me.MenuStrip1.ResumeLayout(False)
@@ -641,4 +655,5 @@ Partial Class MainForm
     Friend WithEvents AutoPlay_2F_CheckBox As CheckBox
     Friend WithEvents AutoPlay_3R_CheckBox As CheckBox
     Friend WithEvents AutoPlay_3F_CheckBox As CheckBox
+    Friend WithEvents Fastplay_CheckBox As CheckBox
 End Class

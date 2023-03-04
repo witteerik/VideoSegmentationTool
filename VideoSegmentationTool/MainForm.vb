@@ -545,7 +545,11 @@ Public Class MainForm
                     Exit Sub
                 End If
 
-                Video_TrackBar.Value -= 1
+                If Fastplay_CheckBox.Checked = True Then
+                    Video_TrackBar.Value = Math.Max(0, Video_TrackBar.Value - 5)
+                Else
+                    Video_TrackBar.Value -= 1
+                End If
 
                 If Video_TrackBar.Value <= PlayEndFrame Then
                     PlayLoopTimer.Stop()
@@ -562,7 +566,11 @@ Public Class MainForm
                     Exit Sub
                 End If
 
-                Video_TrackBar.Value += 1
+                If Fastplay_CheckBox.Checked = True Then
+                    Video_TrackBar.Value = Math.Min(Video_TrackBar.Maximum, Video_TrackBar.Value + 5)
+                Else
+                    Video_TrackBar.Value += 1
+                End If
 
                 If Video_TrackBar.Value >= PlayEndFrame Then
                     PlayLoopTimer.Stop()
