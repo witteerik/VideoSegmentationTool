@@ -67,6 +67,8 @@ Public Class MainForm
                 FileName_ListBox.SelectedIndex = 0
             End If
 
+            FileCount_Label.Text = FileName_ListBox.Items.Count & " files"
+
         End If
 
     End Sub
@@ -140,11 +142,16 @@ Public Class MainForm
         LookForSegmentationResult()
 
         'Calculates and draws the difference vector
-        Dim DifferenceVector = CalculateNormalizedDifferenceVector()
-        LinePlot.DrawLineAndPointData(DifferenceVector.Item1.ToArray, DifferenceVector.Item2.ToArray)
+        If DistanceVector_CheckBox.Checked = True Then
+            Dim DifferenceVector = CalculateNormalizedDifferenceVector()
+            LinePlot.DrawLineAndPointData(DifferenceVector.Item1.ToArray, DifferenceVector.Item2.ToArray)
+        End If
 
         EnableControls(True)
         CheckAndUnlockPlayButtons()
+
+        'Setting focus to the Video_TrackBar to enable mouse scrolling without clicking the control
+        Video_TrackBar.Focus()
 
     End Sub
 
@@ -589,6 +596,69 @@ Public Class MainForm
         End If
 
         CheckAndUnlockPlayButtons()
+
+    End Sub
+
+    Private Sub Filter_Button_Click(sender As Object, e As EventArgs) Handles Filter_Button.Click
+
+        SaveResults()
+
+        'Filter out the files not included in the results text box
+        Dim KeepList As New List(Of String)
+
+        Dim SegmentationLines = Result_TextBox.Lines.ToList
+
+        For Each Item In SegmentationLines
+            If Item.Trim = "" Then Continue For
+            Dim SegmentationSplitList = Item.Trim.Split(",").ToList
+            If SegmentationSplitList.Count >= 5 Then
+
+                'Using this odd method, since the filename may contain commas, causing the split to contain more than five slots
+                Dim FileName = String.Join(",", SegmentationSplitList.GetRange(0, SegmentationSplitList.Count - 4))
+                If FileName.Trim = "" Then Continue For
+                If FileName_ListBox.Items.Contains(FileName.Trim) Then
+                    KeepList.Add(FileName.Trim)
+                End If
+            End If
+        Next
+
+        'Deselecting video
+        CurrentPath = ""
+        FileName_ListBox.SelectedIndex = -1
+
+        FileName_ListBox.Items.Clear()
+        For Each FileName In KeepList
+            FileName_ListBox.Items.Add(FileName)
+        Next
+        If FileName_ListBox.Items.Count > 0 Then
+            FileName_ListBox.SelectedIndex = 0
+        End If
+
+        FileCount_Label.Text = FileName_ListBox.Items.Count & " files"
+
+        SetNewVideoFile()
+
+    End Sub
+
+    Private Sub CheckBox1_CheckedChanged(sender As Object, e As EventArgs) Handles DistanceVector_CheckBox.CheckedChanged
+
+        SetNewVideoFile()
+
+    End Sub
+
+    Private Sub Start_TextBox_Click(sender As Object, e As EventArgs) Handles Start_TextBox.Click
+
+        If CurrentStartFrame > -1 Then
+            Video_TrackBar.Value = CurrentStartFrame
+        End If
+
+    End Sub
+
+    Private Sub End_TextBox_Click(sender As Object, e As EventArgs) Handles End_TextBox.Click
+
+        If CurrentEndFrame > -1 Then
+            Video_TrackBar.Value = CurrentEndFrame
+        End If
 
     End Sub
 End Class

@@ -37,6 +37,8 @@ Partial Class MainForm
         Me.Previous_Button = New System.Windows.Forms.Button()
         Me.Result_TextBox = New System.Windows.Forms.TextBox()
         Me.TableLayoutPanel1 = New System.Windows.Forms.TableLayoutPanel()
+        Me.Filter_Button = New System.Windows.Forms.Button()
+        Me.FileCount_Label = New System.Windows.Forms.Label()
         Me.Panel2 = New System.Windows.Forms.Panel()
         Me.TableLayoutPanel3 = New System.Windows.Forms.TableLayoutPanel()
         Me.Splitter4 = New System.Windows.Forms.Splitter()
@@ -49,6 +51,7 @@ Partial Class MainForm
         Me.Play2_Button = New ControlsLibrary.PlayButton()
         Me.Play3_Rev_Button = New ControlsLibrary.PlayButton()
         Me.Play3_Button = New ControlsLibrary.PlayButton()
+        Me.DistanceVector_CheckBox = New System.Windows.Forms.CheckBox()
         Me.Splitter3 = New System.Windows.Forms.Splitter()
         Me.MenuStrip1 = New System.Windows.Forms.MenuStrip()
         Me.AboutToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -69,14 +72,14 @@ Partial Class MainForm
         Me.ImageBox1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.ImageBox1.Location = New System.Drawing.Point(3, 3)
         Me.ImageBox1.Name = "ImageBox1"
-        Me.ImageBox1.Size = New System.Drawing.Size(603, 261)
+        Me.ImageBox1.Size = New System.Drawing.Size(603, 248)
         Me.ImageBox1.TabIndex = 2
         Me.ImageBox1.TabStop = False
         '
         'Next_Button
         '
         Me.Next_Button.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.Next_Button.Location = New System.Drawing.Point(185, 450)
+        Me.Next_Button.Location = New System.Drawing.Point(185, 437)
         Me.Next_Button.Name = "Next_Button"
         Me.Video_TableLayoutPanel.SetRowSpan(Me.Next_Button, 2)
         Me.Next_Button.Size = New System.Drawing.Size(176, 54)
@@ -88,7 +91,7 @@ Partial Class MainForm
         '
         Me.Video_TableLayoutPanel.SetColumnSpan(Me.Video_TrackBar, 3)
         Me.Video_TrackBar.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.Video_TrackBar.Location = New System.Drawing.Point(3, 370)
+        Me.Video_TrackBar.Location = New System.Drawing.Point(3, 357)
         Me.Video_TrackBar.Name = "Video_TrackBar"
         Me.Video_TrackBar.Size = New System.Drawing.Size(540, 34)
         Me.Video_TrackBar.TabIndex = 4
@@ -96,7 +99,7 @@ Partial Class MainForm
         'LockStart_Button
         '
         Me.LockStart_Button.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.LockStart_Button.Location = New System.Drawing.Point(367, 450)
+        Me.LockStart_Button.Location = New System.Drawing.Point(367, 437)
         Me.LockStart_Button.Name = "LockStart_Button"
         Me.LockStart_Button.Size = New System.Drawing.Size(176, 24)
         Me.LockStart_Button.TabIndex = 5
@@ -106,7 +109,7 @@ Partial Class MainForm
         'LockEnd_Button
         '
         Me.LockEnd_Button.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.LockEnd_Button.Location = New System.Drawing.Point(367, 480)
+        Me.LockEnd_Button.Location = New System.Drawing.Point(367, 467)
         Me.LockEnd_Button.Name = "LockEnd_Button"
         Me.LockEnd_Button.Size = New System.Drawing.Size(176, 24)
         Me.LockEnd_Button.TabIndex = 6
@@ -116,7 +119,7 @@ Partial Class MainForm
         'Start_TextBox
         '
         Me.Start_TextBox.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.Start_TextBox.Location = New System.Drawing.Point(549, 450)
+        Me.Start_TextBox.Location = New System.Drawing.Point(549, 437)
         Me.Start_TextBox.Name = "Start_TextBox"
         Me.Start_TextBox.ReadOnly = True
         Me.Start_TextBox.Size = New System.Drawing.Size(57, 23)
@@ -126,7 +129,7 @@ Partial Class MainForm
         'End_TextBox
         '
         Me.End_TextBox.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.End_TextBox.Location = New System.Drawing.Point(549, 480)
+        Me.End_TextBox.Location = New System.Drawing.Point(549, 467)
         Me.End_TextBox.Name = "End_TextBox"
         Me.End_TextBox.ReadOnly = True
         Me.End_TextBox.Size = New System.Drawing.Size(57, 23)
@@ -148,9 +151,9 @@ Partial Class MainForm
         Me.FileName_ListBox.Dock = System.Windows.Forms.DockStyle.Fill
         Me.FileName_ListBox.FormattingEnabled = True
         Me.FileName_ListBox.ItemHeight = 15
-        Me.FileName_ListBox.Location = New System.Drawing.Point(3, 85)
+        Me.FileName_ListBox.Location = New System.Drawing.Point(3, 115)
         Me.FileName_ListBox.Name = "FileName_ListBox"
-        Me.FileName_ListBox.Size = New System.Drawing.Size(227, 419)
+        Me.FileName_ListBox.Size = New System.Drawing.Size(227, 352)
         Me.FileName_ListBox.TabIndex = 11
         '
         'Extensions_TextBox
@@ -175,7 +178,7 @@ Partial Class MainForm
         'Previous_Button
         '
         Me.Previous_Button.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.Previous_Button.Location = New System.Drawing.Point(3, 450)
+        Me.Previous_Button.Location = New System.Drawing.Point(3, 437)
         Me.Previous_Button.Name = "Previous_Button"
         Me.Video_TableLayoutPanel.SetRowSpan(Me.Previous_Button, 2)
         Me.Previous_Button.Size = New System.Drawing.Size(176, 54)
@@ -190,7 +193,7 @@ Partial Class MainForm
         Me.Result_TextBox.Multiline = True
         Me.Result_TextBox.Name = "Result_TextBox"
         Me.Result_TextBox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
-        Me.Result_TextBox.Size = New System.Drawing.Size(240, 501)
+        Me.Result_TextBox.Size = New System.Drawing.Size(215, 488)
         Me.Result_TextBox.TabIndex = 15
         Me.Result_TextBox.WordWrap = False
         '
@@ -200,18 +203,42 @@ Partial Class MainForm
         Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
         Me.TableLayoutPanel1.Controls.Add(Me.Folder_Button, 0, 0)
         Me.TableLayoutPanel1.Controls.Add(Me.Label1, 0, 1)
-        Me.TableLayoutPanel1.Controls.Add(Me.FileName_ListBox, 0, 3)
+        Me.TableLayoutPanel1.Controls.Add(Me.FileName_ListBox, 0, 4)
         Me.TableLayoutPanel1.Controls.Add(Me.Extensions_TextBox, 0, 2)
+        Me.TableLayoutPanel1.Controls.Add(Me.Filter_Button, 0, 3)
+        Me.TableLayoutPanel1.Controls.Add(Me.FileCount_Label, 0, 5)
         Me.TableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Left
         Me.TableLayoutPanel1.Location = New System.Drawing.Point(0, 0)
         Me.TableLayoutPanel1.Name = "TableLayoutPanel1"
-        Me.TableLayoutPanel1.RowCount = 4
+        Me.TableLayoutPanel1.RowCount = 6
         Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30.0!))
         Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 24.0!))
         Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 28.0!))
+        Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30.0!))
         Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
-        Me.TableLayoutPanel1.Size = New System.Drawing.Size(233, 507)
+        Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 24.0!))
+        Me.TableLayoutPanel1.Size = New System.Drawing.Size(233, 494)
         Me.TableLayoutPanel1.TabIndex = 16
+        '
+        'Filter_Button
+        '
+        Me.Filter_Button.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.Filter_Button.Location = New System.Drawing.Point(3, 85)
+        Me.Filter_Button.Name = "Filter_Button"
+        Me.Filter_Button.Size = New System.Drawing.Size(227, 24)
+        Me.Filter_Button.TabIndex = 14
+        Me.Filter_Button.Text = "Filter non-segmented"
+        Me.Filter_Button.UseVisualStyleBackColor = True
+        '
+        'FileCount_Label
+        '
+        Me.FileCount_Label.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.FileCount_Label.Location = New System.Drawing.Point(3, 470)
+        Me.FileCount_Label.Name = "FileCount_Label"
+        Me.FileCount_Label.Size = New System.Drawing.Size(227, 24)
+        Me.FileCount_Label.TabIndex = 15
+        Me.FileCount_Label.Text = "Label2"
+        Me.FileCount_Label.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         '
         'Panel2
         '
@@ -223,7 +250,7 @@ Partial Class MainForm
         Me.Panel2.Dock = System.Windows.Forms.DockStyle.Fill
         Me.Panel2.Location = New System.Drawing.Point(0, 24)
         Me.Panel2.Name = "Panel2"
-        Me.Panel2.Size = New System.Drawing.Size(1102, 507)
+        Me.Panel2.Size = New System.Drawing.Size(1077, 494)
         Me.Panel2.TabIndex = 18
         '
         'TableLayoutPanel3
@@ -236,7 +263,7 @@ Partial Class MainForm
         Me.TableLayoutPanel3.Name = "TableLayoutPanel3"
         Me.TableLayoutPanel3.RowCount = 1
         Me.TableLayoutPanel3.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50.0!))
-        Me.TableLayoutPanel3.Size = New System.Drawing.Size(246, 507)
+        Me.TableLayoutPanel3.Size = New System.Drawing.Size(221, 494)
         Me.TableLayoutPanel3.TabIndex = 20
         '
         'Splitter4
@@ -245,7 +272,7 @@ Partial Class MainForm
         Me.Splitter4.MinExtra = 7
         Me.Splitter4.MinSize = 7
         Me.Splitter4.Name = "Splitter4"
-        Me.Splitter4.Size = New System.Drawing.Size(7, 507)
+        Me.Splitter4.Size = New System.Drawing.Size(7, 494)
         Me.Splitter4.TabIndex = 19
         Me.Splitter4.TabStop = False
         '
@@ -266,6 +293,7 @@ Partial Class MainForm
         Me.Video_TableLayoutPanel.Controls.Add(Me.Previous_Button, 0, 4)
         Me.Video_TableLayoutPanel.Controls.Add(Me.CurrentLocation_Label, 3, 2)
         Me.Video_TableLayoutPanel.Controls.Add(Me.TableLayoutPanel4, 0, 3)
+        Me.Video_TableLayoutPanel.Controls.Add(Me.DistanceVector_CheckBox, 3, 1)
         Me.Video_TableLayoutPanel.Dock = System.Windows.Forms.DockStyle.Left
         Me.Video_TableLayoutPanel.Location = New System.Drawing.Point(240, 0)
         Me.Video_TableLayoutPanel.Name = "Video_TableLayoutPanel"
@@ -276,13 +304,13 @@ Partial Class MainForm
         Me.Video_TableLayoutPanel.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40.0!))
         Me.Video_TableLayoutPanel.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30.0!))
         Me.Video_TableLayoutPanel.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30.0!))
-        Me.Video_TableLayoutPanel.Size = New System.Drawing.Size(609, 507)
+        Me.Video_TableLayoutPanel.Size = New System.Drawing.Size(609, 494)
         Me.Video_TableLayoutPanel.TabIndex = 18
         '
         'CurrentLocation_Label
         '
         Me.CurrentLocation_Label.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.CurrentLocation_Label.Location = New System.Drawing.Point(549, 367)
+        Me.CurrentLocation_Label.Location = New System.Drawing.Point(549, 354)
         Me.CurrentLocation_Label.Name = "CurrentLocation_Label"
         Me.CurrentLocation_Label.Size = New System.Drawing.Size(57, 40)
         Me.CurrentLocation_Label.TabIndex = 15
@@ -303,6 +331,9 @@ Partial Class MainForm
         Me.TableLayoutPanel4.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 50.0!))
         Me.TableLayoutPanel4.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 50.0!))
         Me.TableLayoutPanel4.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25.0!))
+        Me.TableLayoutPanel4.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20.0!))
+        Me.TableLayoutPanel4.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20.0!))
+        Me.TableLayoutPanel4.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20.0!))
         Me.TableLayoutPanel4.Controls.Add(Me.Play1_Rev_Button, 1, 0)
         Me.TableLayoutPanel4.Controls.Add(Me.Play1_Button, 2, 0)
         Me.TableLayoutPanel4.Controls.Add(Me.Play2_Rev_Button, 4, 0)
@@ -310,7 +341,7 @@ Partial Class MainForm
         Me.TableLayoutPanel4.Controls.Add(Me.Play3_Rev_Button, 7, 0)
         Me.TableLayoutPanel4.Controls.Add(Me.Play3_Button, 8, 0)
         Me.TableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.TableLayoutPanel4.Location = New System.Drawing.Point(3, 410)
+        Me.TableLayoutPanel4.Location = New System.Drawing.Point(3, 397)
         Me.TableLayoutPanel4.Name = "TableLayoutPanel4"
         Me.TableLayoutPanel4.RowCount = 1
         Me.TableLayoutPanel4.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
@@ -383,13 +414,26 @@ Partial Class MainForm
         Me.Play3_Button.UseVisualStyleBackColor = True
         Me.Play3_Button.ViewMode = ControlsLibrary.PlayButton.ViewModes.Play
         '
+        'DistanceVector_CheckBox
+        '
+        Me.DistanceVector_CheckBox.AutoSize = True
+        Me.DistanceVector_CheckBox.CheckAlign = System.Drawing.ContentAlignment.MiddleCenter
+        Me.DistanceVector_CheckBox.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.DistanceVector_CheckBox.Location = New System.Drawing.Point(549, 257)
+        Me.DistanceVector_CheckBox.Name = "DistanceVector_CheckBox"
+        Me.DistanceVector_CheckBox.Size = New System.Drawing.Size(57, 94)
+        Me.DistanceVector_CheckBox.TabIndex = 17
+        Me.DistanceVector_CheckBox.Text = "" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "On/Off"
+        Me.DistanceVector_CheckBox.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        Me.DistanceVector_CheckBox.UseVisualStyleBackColor = True
+        '
         'Splitter3
         '
         Me.Splitter3.Location = New System.Drawing.Point(233, 0)
         Me.Splitter3.MinExtra = 7
         Me.Splitter3.MinSize = 7
         Me.Splitter3.Name = "Splitter3"
-        Me.Splitter3.Size = New System.Drawing.Size(7, 507)
+        Me.Splitter3.Size = New System.Drawing.Size(7, 494)
         Me.Splitter3.TabIndex = 17
         Me.Splitter3.TabStop = False
         '
@@ -401,7 +445,7 @@ Partial Class MainForm
         Me.MenuStrip1.Name = "MenuStrip1"
         Me.MenuStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.System
         Me.MenuStrip1.RightToLeft = System.Windows.Forms.RightToLeft.Yes
-        Me.MenuStrip1.Size = New System.Drawing.Size(1102, 24)
+        Me.MenuStrip1.Size = New System.Drawing.Size(1077, 24)
         Me.MenuStrip1.TabIndex = 19
         Me.MenuStrip1.Text = "MenuStrip1"
         '
@@ -415,7 +459,7 @@ Partial Class MainForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 15.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1102, 531)
+        Me.ClientSize = New System.Drawing.Size(1077, 518)
         Me.Controls.Add(Me.Panel2)
         Me.Controls.Add(Me.MenuStrip1)
         Me.KeyPreview = True
@@ -468,4 +512,7 @@ Partial Class MainForm
     Friend WithEvents Play2_Button As ControlsLibrary.PlayButton
     Friend WithEvents Play3_Rev_Button As ControlsLibrary.PlayButton
     Friend WithEvents Play3_Button As ControlsLibrary.PlayButton
+    Friend WithEvents Filter_Button As Button
+    Friend WithEvents FileCount_Label As Label
+    Friend WithEvents DistanceVector_CheckBox As CheckBox
 End Class
