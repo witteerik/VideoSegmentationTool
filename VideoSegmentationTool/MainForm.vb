@@ -17,6 +17,7 @@ Public Class MainForm
     Private CurrentFrameRate As Integer
     Private LinePlot As ControlsLibrary.LineDiagram
     Private IsPlaying As Boolean = False
+    Private WithEvents PlayLoopTimer As New Windows.Forms.Timer
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
@@ -478,6 +479,8 @@ Public Class MainForm
             Exit Sub
         End If
 
+        IsPlaying = True
+
         EnableControls(False)
 
         Select Case PlayType
@@ -516,22 +519,18 @@ Public Class MainForm
                 Play3_Rev_Button.Enabled = True
 
             Case Else
+                IsPlaying = False
+                EnableControls(False)
                 Exit Sub
         End Select
 
         'Setting timer interval depending on the vidoe frame rate
         PlayLoopTimer.Interval = Math.Max(1, 1000 * (1 / CurrentFrameRate))
 
-        IsPlaying = True
-
         PlayLoopTimer.Start()
-
-        EnableControls(False)
 
     End Sub
 
-
-    Private WithEvents PlayLoopTimer As New Windows.Forms.Timer
 
     Private Sub PlayLoopTimer_Tick() Handles PlayLoopTimer.Tick
 
